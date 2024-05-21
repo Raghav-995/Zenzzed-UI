@@ -9,7 +9,7 @@ var dColorScheme =
 
 ThemeData lightTheme = ThemeData().copyWith(
     colorScheme: lColorScheme,
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
     scaffoldBackgroundColor: lColorScheme.onPrimary,
     appBarTheme: AppBarTheme(backgroundColor: lColorScheme.primary),
     elevatedButtonTheme: ElevatedButtonThemeData(

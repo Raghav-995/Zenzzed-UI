@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zenzzed/authentication/signup.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -105,11 +106,17 @@ class SignIn extends StatelessWidget {
                     const SizedBox(
                       width: 4.0,
                     ),
-                    Text(
-                      'Sign up',
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Theme.of(context).colorScheme.primary),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (c) => const SignUp()));
+                      },
+                      child: Text(
+                        'Sign up',
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary),
+                      ),
                     ),
                   ],
                 ),
