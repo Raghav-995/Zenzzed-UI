@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 var lColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color.fromARGB(0, 5, 113, 244),
+  seedColor: const Color.fromARGB(0, 3, 18, 37),
 );
 
 var dColorScheme =
@@ -14,8 +14,8 @@ ThemeData lightTheme = ThemeData().copyWith(
     appBarTheme: AppBarTheme(backgroundColor: lColorScheme.primary),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(lColorScheme.primary),
-        padding: const WidgetStatePropertyAll(
+        backgroundColor: MaterialStatePropertyAll(lColorScheme.primary),
+        padding: const MaterialStatePropertyAll(
             EdgeInsets.symmetric(horizontal: 40.0)),
       ),
     ),

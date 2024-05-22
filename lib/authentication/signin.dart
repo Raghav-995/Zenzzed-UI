@@ -27,6 +27,9 @@ class SignIn extends StatelessWidget {
                         'SIGN IN TO',
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
+                      const SizedBox(
+                        height: 2.0,
+                      ),
                       Text(
                         'ZENZZED',
                         style: Theme.of(context)
@@ -60,13 +63,17 @@ class SignIn extends StatelessWidget {
                           width: 2.0,
                         ),
                       ),
-                      prefixIcon: const Icon(Icons.email),
+                      prefixIcon: Icon(
+                        Icons.email,
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                      ),
                       labelText: 'Email address',
                       labelStyle: Theme.of(context)
                           .textTheme
                           .bodyMedium!
                           .copyWith(
-                              color: Theme.of(context).colorScheme.onSurface),
+                              color:
+                                  Theme.of(context).colorScheme.outlineVariant),
                       border: OutlineInputBorder(
                           borderSide: BorderSide(
                             color: Theme.of(context).colorScheme.primary,
@@ -99,12 +106,13 @@ class SignIn extends StatelessWidget {
                     Text(
                       'if you don\'t have an account?',
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          fontSize: 14.0,
                           color: Theme.of(context)
                               .colorScheme
                               .onSecondaryContainer),
                     ),
                     const SizedBox(
-                      width: 4.0,
+                      width: 1.0,
                     ),
                     TextButton(
                       onPressed: () {
@@ -113,7 +121,7 @@ class SignIn extends StatelessWidget {
                       },
                       child: Text(
                         'Sign up',
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.primary),
                       ),

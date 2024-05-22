@@ -6,8 +6,14 @@ class SignUp extends StatelessWidget {
   Widget build(context) {
     return Scaffold(
       appBar: AppBar(
-        leading:
-            IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.arrow_back,
+              color: Theme.of(context).colorScheme.onPrimary,
+            )),
       ),
       body: Stack(
         children: [
@@ -25,8 +31,11 @@ class SignUp extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'SIGN IN TO',
+                        'Register With',
                         style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      const SizedBox(
+                        height: 2.0,
                       ),
                       Text(
                         'ZENZZED',
