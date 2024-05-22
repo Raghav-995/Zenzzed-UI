@@ -17,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _navigateToHome(BuildContext context) async {
     await Future.delayed(const Duration(milliseconds: 3000), () {});
+
     // ignore: use_build_context_synchronously
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(builder: (context) => const SignIn()),
@@ -34,13 +35,13 @@ class _SplashScreenState extends State<SplashScreen> {
               'ZENZZED',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontSize: 40,
+                  fontSize: 50,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 8.0,
                   color: Theme.of(context).colorScheme.onPrimary,
                   shadows: [
                     Shadow(
-                        offset: const Offset(10.0, 10.0),
+                        offset: const Offset(5.0, 2.0),
                         blurRadius: 4.0,
                         color:
                             Theme.of(context).colorScheme.onSecondaryContainer),
@@ -48,34 +49,14 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           Positioned(
-            bottom: 20,
+            bottom: 40,
             left: 0,
             right: 0,
-            child: Text(
-              '@Zenzzed all rights reserved',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 10.0,
-                  ),
-            ),
+            child: Text('@Zenzzed all rights reserved',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodySmall),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Screen'),
-      ),
-      body: const Center(
-        child: Text('Home Screen'),
       ),
     );
   }

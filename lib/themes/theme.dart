@@ -1,22 +1,64 @@
 import 'package:flutter/material.dart';
 
 var lColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color.fromARGB(0, 5, 113, 244),
-);
+    seedColor: const Color.fromARGB(0, 3, 18, 37),
+    onSecondaryContainer: Colors.grey,
+    background: Colors.black12);
 
-var dColorScheme =
-    ColorScheme.fromSeed(seedColor: const Color.fromARGB(110, 1, 4, 19));
+var dColorScheme = ColorScheme.fromSeed(
+    seedColor: const Color.fromARGB(110, 1, 4, 19),
+    onSecondaryContainer: Colors.white);
 
 ThemeData lightTheme = ThemeData().copyWith(
     colorScheme: lColorScheme,
-    brightness: Brightness.dark,
+    brightness: Brightness.light,
     scaffoldBackgroundColor: lColorScheme.onPrimary,
     appBarTheme: AppBarTheme(backgroundColor: lColorScheme.primary),
     elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ButtonStyle(
-        backgroundColor: WidgetStatePropertyAll(lColorScheme.primary),
-        padding: const WidgetStatePropertyAll(
-            EdgeInsets.symmetric(horizontal: 40.0)),
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          // Adjust as needed
+        ),
+        backgroundColor: lColorScheme.primary,
+        padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 16.0),
+      ),
+    ),
+    textTheme: ThemeData().textTheme.copyWith(
+        titleLarge: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: lColorScheme.onPrimary,
+          fontSize: 24,
+        ),
+        bodyLarge: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.normal,
+          color: lColorScheme.onPrimary,
+        ),
+        bodyMedium: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.normal,
+          color: lColorScheme.onPrimary,
+        ),
+        bodySmall: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.normal,
+          color: lColorScheme.onPrimary,
+        )));
+
+ThemeData darkTheme = ThemeData().copyWith(
+    colorScheme: dColorScheme,
+    brightness: Brightness.dark,
+    appBarTheme: AppBarTheme(backgroundColor: lColorScheme.primary),
+    scaffoldBackgroundColor: lColorScheme.background,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          // Adjust as needed
+        ),
+        backgroundColor: lColorScheme.primary,
+        padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 16.0),
       ),
     ),
     textTheme: ThemeData().textTheme.copyWith(
@@ -39,29 +81,4 @@ ThemeData lightTheme = ThemeData().copyWith(
           fontSize: 14,
           fontWeight: FontWeight.w300,
           color: lColorScheme.onPrimary,
-        )));
-
-ThemeData darkTheme = ThemeData().copyWith(
-    colorScheme: dColorScheme,
-    brightness: Brightness.dark,
-    textTheme: ThemeData().textTheme.copyWith(
-        titleLarge: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: lColorScheme.onSecondaryContainer,
-          fontSize: 24,
-        ),
-        bodyLarge: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.normal,
-          color: lColorScheme.onSecondaryContainer,
-        ),
-        bodyMedium: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.normal,
-          color: lColorScheme.onSecondaryContainer,
-        ),
-        bodySmall: TextStyle(
-          fontSize: 12,
-          fontWeight: FontWeight.w300,
-          color: lColorScheme.onSecondaryContainer,
         )));
