@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -62,8 +63,23 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(
-        child: Text('Home Screen'),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            ImageSlideshow(
+              autoPlayInterval: 3000,
+              isLoop: true,
+              children: [
+                for (var i = 1; i < 5; i++)
+                  Image.network(
+                    'https://c7.alamy.com/comp/2BXD39W/illustration-of-a-woman-cleaning-the-house-using-a-vacuum-cleaner-happily-flat-style-cartoon-character-with-orange-and-green-colors-2BXD39W.jpg',
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
