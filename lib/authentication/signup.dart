@@ -12,11 +12,12 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(context) {
-    final bottomInsets = MediaQuery.of(context).viewInsets.bottom;
-    bool isKeyboardOpen = bottomInsets != 0;
+    //final bottomInsets = MediaQuery.of(context).viewInsets.bottom;
+    // bool isKeyboardOpen = bottomInsets != 0;
 
     return Scaffold(
       body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: Column(
           children: [
             Container(
@@ -201,7 +202,7 @@ class _SignUpState extends State<SignUp> {
               ),
             ),
             const SizedBox(
-              height: 100,
+              height: 80,
             ),
             Center(
               child: Column(
@@ -231,9 +232,6 @@ class _SignUpState extends State<SignUp> {
                                         .colorScheme
                                         .onSecondaryContainer,
                                   ),
-                        ),
-                        const SizedBox(
-                          width: 1.0,
                         ),
                         TextButton(
                           onPressed: () {

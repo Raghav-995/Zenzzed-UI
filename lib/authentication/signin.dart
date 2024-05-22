@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zenzzed/authentication/signup.dart';
+import 'package:zenzzed/widgets/homepage.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -7,6 +8,7 @@ class SignIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         child: Column(
           children: [
             Container(
@@ -86,7 +88,10 @@ class SignIn extends StatelessWidget {
               height: 50.0,
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (c) => const HomeScreen()));
+                },
                 child: Text(
                   'Continue',
                   style: Theme.of(context).textTheme.bodyMedium,
@@ -105,9 +110,6 @@ class SignIn extends StatelessWidget {
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         color:
                             Theme.of(context).colorScheme.onSecondaryContainer),
-                  ),
-                  const SizedBox(
-                    width: 1.0,
                   ),
                   TextButton(
                     onPressed: () {
