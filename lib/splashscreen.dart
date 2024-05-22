@@ -35,13 +35,13 @@ class _SplashScreenState extends State<SplashScreen> {
               'ZENZZED',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                  fontSize: 40,
+                  fontSize: 50,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 8.0,
                   color: Theme.of(context).colorScheme.onPrimary,
                   shadows: [
                     Shadow(
-                        offset: const Offset(10.0, 10.0),
+                        offset: const Offset(5.0, 2.0),
                         blurRadius: 4.0,
                         color:
                             Theme.of(context).colorScheme.onSecondaryContainer),
@@ -49,16 +49,12 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           Positioned(
-            bottom: 20,
+            bottom: 40,
             left: 0,
             right: 0,
-            child: Text(
-              '@Zenzzed all rights reserved',
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 10.0,
-                  ),
-            ),
+            child: Text('@Zenzzed all rights reserved',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.bodySmall),
           ),
         ],
       ),
