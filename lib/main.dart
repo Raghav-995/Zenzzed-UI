@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:zenzzed/Home/View/home_page.dart';
 import 'package:zenzzed/splashscreen.dart';
 import 'package:zenzzed/themes/theme.dart';
 
@@ -10,12 +12,12 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Splash Screen Example',
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
-      home: const SplashScreen(),
+      home: const HomePage(),
       debugShowCheckedModeBanner: false,
     );
   }

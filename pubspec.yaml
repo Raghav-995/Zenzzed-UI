@@ -38,7 +38,8 @@ dependencies:
   easy_splash_screen: ^1.0.4
   animated_splash_screen: ^1.3.0
   flutter_native_splash: ^2.4.0
-
+  flutter_image_slideshow: ^0.1.6
+  get: ^4.6.6
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -62,8 +63,15 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/profile.jpg
+    - assets/images/cleaning.jpg
+    - assets/logo.png
+    - assets/icons/grocery.png
+    - assets/icons/handyman.png
+    - assets/icons/more.png
+    - assets/icons/movers.png
+    - assets/icons/plumber.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
