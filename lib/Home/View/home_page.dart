@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/Controller/home_page_controller.dart';
+import 'package:zenzzed/Home/View/all_requests.dart';
 import 'package:zenzzed/Home/View/dark_service_card.dart';
 import 'package:zenzzed/Home/View/request_referral_card.dart';
+import 'package:zenzzed/Home/View/search_service.dart';
 import 'package:zenzzed/Home/View/service_card.dart';
 import 'package:zenzzed/themes/theme.dart';
 
@@ -41,7 +43,9 @@ class HomePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => SearchService());
+            },
             icon: const Icon(
               CupertinoIcons.search,
             ),
@@ -218,7 +222,9 @@ class HomePage extends StatelessWidget {
                     ),
                     const Spacer(),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => AllRequests());
+                      },
                       child: const Text('View all'),
                     ),
                   ],

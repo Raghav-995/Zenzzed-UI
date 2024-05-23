@@ -9,11 +9,11 @@ class ServiceCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(
         top: 10,
-        left: 5,
-        right: 5,
-        bottom: 30,
+        left: 10,
+        right: 10,
+        bottom: 25,
       ),
-      height: MediaQuery.of(context).size.height / 2.5,
+      height: 400,
       width: MediaQuery.of(context).size.width * 0.85,
       decoration: BoxDecoration(
         color: Colors.white,

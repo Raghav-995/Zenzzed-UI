@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zenzzed/Home/View/home_page.dart';
 import 'package:zenzzed/authentication/signup.dart';
 import 'package:zenzzed/widgets/homepage.dart';
 
@@ -90,7 +91,7 @@ class SignIn extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => const HomeScreen()));
+                      MaterialPageRoute(builder: (c) => const HomePage()));
                 },
                 child: Text(
                   'Continue',

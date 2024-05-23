@@ -13,7 +13,8 @@ class DarkServiceCard extends StatelessWidget {
         right: 5,
         bottom: 30,
       ),
-      height: MediaQuery.of(context).size.height / 2.5,
+      // height: MediaQuery.of(context).size.height / 2.5,
+      height: 400,
       width: MediaQuery.of(context).size.width * 0.85,
       decoration: BoxDecoration(
         color: Colors.black.withOpacity(0.9),
@@ -82,7 +83,7 @@ class DarkServiceCard extends StatelessWidget {
                                 Text(
                                   'James smith',
                                   style: TextStyle(
-                                    color: lColorScheme.primary,
+                                    color: Colors.white.withOpacity(0.87),
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
