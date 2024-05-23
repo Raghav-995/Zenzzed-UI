@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 var lColorScheme = ColorScheme.fromSeed(
-    seedColor: const Color.fromARGB(0, 3, 18, 37),
-    onSecondaryContainer: Colors.grey,
-    background: Colors.black12);
+  seedColor: const Color.fromARGB(0, 3, 18, 37),
+  onSecondaryContainer: Colors.grey,
+);
 
 var dColorScheme = ColorScheme.fromSeed(
     seedColor: const Color.fromARGB(110, 1, 4, 19),
-    onSecondaryContainer: Colors.white);
+    onSecondaryContainer: Colors.white,
+    background: Colors.black12);
 
 ThemeData lightTheme = ThemeData().copyWith(
     colorScheme: lColorScheme,
@@ -50,7 +51,7 @@ ThemeData darkTheme = ThemeData().copyWith(
     colorScheme: dColorScheme,
     brightness: Brightness.dark,
     appBarTheme: AppBarTheme(backgroundColor: lColorScheme.primary),
-    scaffoldBackgroundColor: lColorScheme.background,
+    scaffoldBackgroundColor: dColorScheme.background,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(

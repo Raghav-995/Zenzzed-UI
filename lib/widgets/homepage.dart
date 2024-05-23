@@ -65,6 +65,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ImageSlideshow(
               autoPlayInterval: 3000,
@@ -77,7 +78,85 @@ class HomeScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                   )
               ],
-            )
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    borderRadius: BorderRadius.circular(12.0)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text('My service requests',
+                          style: Theme.of(context).textTheme.bodyMedium),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          print('hello');
+                        },
+                        child: Row(
+                          children: [
+                            Text('04',
+                                style: Theme.of(context).textTheme.bodyLarge),
+                            Icon(
+                              Icons.arrow_right,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    borderRadius: BorderRadius.circular(12.0)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text('My referal earnings',
+                          style: Theme.of(context).textTheme.bodyMedium),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                          print('hello');
+                        },
+                        child: Row(
+                          children: [
+                            Text('\$ 123',
+                                style: Theme.of(context).textTheme.bodyLarge),
+                            Icon(
+                              Icons.arrow_right,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
+                          ],
+                        ))
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+              child: Text(
+                'Top searched services',
+                textAlign: TextAlign.left,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(color: Theme.of(context).colorScheme.primary),
+              ),
+            ),
           ],
         ),
       ),
