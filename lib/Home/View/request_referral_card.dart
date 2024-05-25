@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zenzzed/themes/theme.dart';
 
 class RequestReferralCard extends StatelessWidget {
   const RequestReferralCard(
@@ -10,15 +9,14 @@ class RequestReferralCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 60,
       width: double.infinity,
-      margin: const EdgeInsets.all(5),
+      margin: const EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: BorderRadius.circular(
           10,
         ),
-        color: lColorScheme.primary,
+        color: Theme.of(context).colorScheme.primary,
       ),
       child: TextButton(
         onPressed: () {},
@@ -26,21 +24,20 @@ class RequestReferralCard extends StatelessWidget {
           children: [
             Text(
               name,
-              style: const TextStyle(
-                color: Colors.white,
-              ),
+              style: Theme.of(context).textTheme.bodySmall,
             ),
             const Spacer(),
             Text(
               number,
-              style: const TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
-            const Icon(
+            const SizedBox(
+              width: 2.0,
+            ),
+            Icon(
               Icons.arrow_forward_ios,
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.onPrimary,
+              size: 14.0,
             ),
           ],
         ),

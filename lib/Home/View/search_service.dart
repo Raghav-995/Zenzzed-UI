@@ -4,14 +4,15 @@ import 'package:zenzzed/Home/Controller/search_service_controller.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class SearchService extends StatelessWidget {
-  SearchService({super.key});
-  var controller = Get.put(SearchServiceController());
+  const SearchService({super.key});
+
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(SearchServiceController());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -21,14 +22,10 @@ class SearchService extends StatelessWidget {
             Get.back();
           },
         ),
-        title: Text(
-          'Search Service',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: lColorScheme.primary,
-          ),
-        ),
+        title: Text('Search Service',
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+                fontWeight: FontWeight.bold)),
       ),
       body: Center(
         child: Column(
@@ -42,10 +39,10 @@ class SearchService extends StatelessWidget {
                   contentPadding: const EdgeInsets.all(
                     10,
                   ),
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.search,
                     size: 30,
-                    color: Colors.grey,
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(
@@ -53,9 +50,9 @@ class SearchService extends StatelessWidget {
                     ),
                   ),
                   filled: true,
-                  hintStyle: const TextStyle(
+                  hintStyle: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey,
+                    color: Theme.of(context).colorScheme.onSecondaryContainer,
                   ),
                   hintText: 'Search for service...',
                   fillColor: Colors.grey[250],
@@ -83,17 +80,22 @@ class SearchService extends StatelessWidget {
                               'assets/icons/${controller.iconAdd[index]}.png',
                             ).image,
                             size: 30,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer,
                           ),
                           const SizedBox(
                             width: 30,
                           ),
                           Text(
                             controller.serviceNames[index],
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: lColorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),

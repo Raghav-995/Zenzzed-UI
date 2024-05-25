@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/View/service_description_page.dart';
-import 'package:zenzzed/themes/theme.dart';
 
 class ServiceCard extends StatelessWidget {
   const ServiceCard({super.key});
@@ -15,17 +14,17 @@ class ServiceCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(
           top: 10,
-          left: 10,
+          left: 16,
           right: 10,
           bottom: 25,
         ),
-        height: 400,
+        height: 360,
         width: MediaQuery.of(context).size.width * 0.85,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.background,
           borderRadius: const BorderRadius.all(
             Radius.circular(
-              10,
+              12.0,
             ),
           ),
           boxShadow: [
@@ -42,10 +41,9 @@ class ServiceCard extends StatelessWidget {
             Column(
               children: [
                 Container(
+                  width: double.infinity,
                   height: 155,
-                  child: null,
                   decoration: const BoxDecoration(
-                    color: Colors.grey,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(
                         10,
@@ -55,6 +53,13 @@ class ServiceCard extends StatelessWidget {
                       ),
                     ),
                   ),
+                  child: Image.network(
+                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMZF4XHMymvmX6UtgadygRz3TvOkui87dTyQ&s',
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(
+                  height: 8.0,
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),
@@ -68,27 +73,31 @@ class ServiceCard extends StatelessWidget {
                               right: 5,
                               bottom: 5,
                             ),
-                            height: 70,
-                            width: 70,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(40),
-                              child: Image.asset(
+                            child: const CircleAvatar(
+                              radius: 30.0,
+                              backgroundImage: AssetImage(
                                 'assets/images/profile.jpg',
                               ),
                             ),
+                          ),
+                          const SizedBox(
+                            width: 4.0,
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
                                 children: [
-                                  Text(
-                                    'James smith',
-                                    style: TextStyle(
-                                      color: lColorScheme.primary,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
+                                  Text('James smith',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall!
+                                          .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                            fontWeight: FontWeight.bold,
+                                          )),
                                 ],
                               ),
                               Row(
@@ -112,18 +121,24 @@ class ServiceCard extends StatelessWidget {
                                             Radius.circular(20),
                                           ),
                                         ),
-                                        label: const Text("⭐ 4.0"),
-                                        labelStyle: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: lColorScheme.primary,
+                                        label: Text(
+                                          "⭐ 4.0",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall!
+                                              .copyWith(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                  fontWeight: FontWeight.bold),
                                         ),
-                                        backgroundColor: Colors.grey[350],
+                                        backgroundColor: Colors.grey[300],
                                         onPressed: () {},
                                       ),
                                     ],
                                   ),
                                   const SizedBox(
-                                    width: 5,
+                                    width: 8.0,
                                   ),
                                   Wrap(
                                     runSpacing: 0,
@@ -140,12 +155,18 @@ class ServiceCard extends StatelessWidget {
                                             Radius.circular(20),
                                           ),
                                         ),
-                                        label: const Text("Computer repair"),
-                                        labelStyle: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: lColorScheme.primary,
+                                        label: Text(
+                                          "Computer repair",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall!
+                                              .copyWith(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                  fontWeight: FontWeight.bold),
                                         ),
-                                        backgroundColor: Colors.grey[350],
+                                        backgroundColor: Colors.grey[300],
                                         onPressed: () {},
                                       ),
                                     ],
@@ -156,66 +177,83 @@ class ServiceCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const Row(
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Row(
                         children: [
-                          Icon(
-                            Icons.location_on_outlined,
-                            color: Colors.grey,
-                          ),
-                          SizedBox(
-                            width: 5,
+                          Icon(Icons.location_on_outlined,
+                              size: 18.0,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSecondaryContainer),
+                          const SizedBox(
+                            width: 8.0,
                           ),
                           Text(
                             '3529 Alexander Drive, Dallas',
-                            style: TextStyle(
-                              color: Colors.grey,
-                              // fontWeight: FontWeight.bold,
-                            ),
+                            style:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondaryContainer,
+                                    ),
                           ),
                         ],
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 12.0,
                       ),
-                      const Text(
+                      Text(
                         'I request you to please send my laptop for repairing as soon as possible so that i can get back to work',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSecondaryContainer,
+                            ),
                       ),
                       const SizedBox(
-                        height: 2,
+                        height: 8.0,
                       ),
-                      const Divider(
-                        color: Colors.grey,
+                      Divider(
+                        color:
+                            Theme.of(context).colorScheme.onSecondaryContainer,
                       ),
                       const SizedBox(
-                        height: 2,
+                        height: 4.0,
                       ),
-                      const Row(
+                      Row(
                         children: [
                           Icon(
                             CupertinoIcons.location,
                             size: 20,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           Text(
                             '3.mi',
-                            style: TextStyle(
-                              color: Colors.grey,
-                            ),
+                            style:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondaryContainer,
+                                    ),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           Text(
                             '25, Jul',
-                            style: TextStyle(
-                              color: Colors.grey,
-                            ),
+                            style:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondaryContainer,
+                                    ),
                           ),
                         ],
                       ),
@@ -229,16 +267,16 @@ class ServiceCard extends StatelessWidget {
               right: 15,
               child: Container(
                 decoration: BoxDecoration(
-                  color: lColorScheme.primary,
+                  color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(
                     50,
                   ),
                 ),
                 child: IconButton(
                   onPressed: () {},
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.add,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
               ),

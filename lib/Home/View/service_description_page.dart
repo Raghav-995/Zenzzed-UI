@@ -10,7 +10,7 @@ class ServiceDescriptionPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor: Theme.of(context).colorScheme.background,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
@@ -20,14 +20,11 @@ class ServiceDescriptionPage extends StatelessWidget {
             Get.back();
           },
         ),
-        title: Text(
-          'Computer repair',
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: lColorScheme.primary,
-          ),
-        ),
+        title: Text('Computer repair',
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.bold,
+                )),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -57,22 +54,30 @@ class ServiceDescriptionPage extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              ClipRRect(
-                                child: Image.asset(
+                              const CircleAvatar(
+                                radius: 30.0,
+                                backgroundImage: AssetImage(
                                   'assets/images/profile.jpg',
-                                  height: 60,
-                                  width: 60,
                                 ),
+                              ),
+                              const SizedBox(
+                                width: 12.0,
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'James smith',
-                                    style: TextStyle(
-                                      color: lColorScheme.primary,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                  Text('James smith',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                            fontWeight: FontWeight.bold,
+                                          )),
+                                  const SizedBox(
+                                    height: 4.0,
                                   ),
                                   Text(
                                     '⭐ 4.0',
@@ -85,35 +90,47 @@ class ServiceDescriptionPage extends StatelessWidget {
                               ),
                             ],
                           ),
+                          const SizedBox(
+                            height: 10.0,
+                          ),
                           Row(
                             children: [
-                              const Icon(
+                              Icon(
                                 Icons.location_on_outlined,
                                 size: 20,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSecondaryContainer,
                               ),
                               const SizedBox(
-                                width: 5,
+                                width: 8.0,
                               ),
-                              Text(
-                                '3529 Alexander Drive, Dallas',
-                                style: TextStyle(
-                                  color: lColorScheme.primary,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              Text('3529 Alexander Drive, Dallas',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
+                                      )),
                             ],
                           ),
-                          const Row(
+                          Row(
                             children: [
-                              SizedBox(
-                                width: 5,
+                              const SizedBox(
+                                width: 8.0,
                               ),
                               Text(
                                 '3 miles away from your location',
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.grey,
-                                ),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodySmall!
+                                    .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onSecondaryContainer,
+                                    ),
                               ),
                             ],
                           ),
@@ -121,7 +138,7 @@ class ServiceDescriptionPage extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    Container(
+                    SizedBox(
                       height: 100,
                       width: 100,
                       child: ClipRRect(
@@ -148,13 +165,18 @@ class ServiceDescriptionPage extends StatelessWidget {
                   OutlinedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                      shape: WidgetStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
+                        shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
                       ),
+                    )),
+                    child: Text(
+                      'Show on map',
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
-                    child: const Text('Show on map'),
                   ),
                 ],
               ),
@@ -173,24 +195,27 @@ class ServiceDescriptionPage extends StatelessWidget {
                       children: [
                         Text(
                           'Service description',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: lColorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(
+                                color: Theme.of(context).colorScheme.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                       ],
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text(
+                    Text(
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sed molestie dolor. Donec at magna ut libero pulvinar vulputate sed et nisl. Nulla suscipit maximus magna a aliquam. Aliquam pharetra, ligula at consectetur facilisis, risus risus luctus urna, ac efficitur metus risus sed justo. In quis aliquam ex. Mauris magna leo, commodo sed pretium ac, rutrum eu lorem. Nulla facilisi. Aenean convallis, risus et bibendum euismod, velit neque lacinia turpis, at malesuada urna dui vitae neque.Vestibulum at consectetur arcu. Cras auctor tellus eget mi cursus, et posuere erat mattis. Ut et iaculis justo. Phasellus varius ligula non arcu accumsan interdum. Duis odio purus, mattis nec sapien sed, consectetur facilisis urna. Morbi imperdiet maximus libero, sit amet faucibus eros faucibus ultricies. Morbi id tellus quis ante maximus mollis. Proin sed porta massa. Mauris et cursus risus. Proin pharetra imperdiet luctus. Vivamus vitae diam sit amet nunc tristique gravida. In risus mi, fermentum in massa ut, iaculis laoreet nibh. Aliquam erat volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ultrices id erat vel venenatis. Nam nec consequat dui. Duis pretium, mauris viverra pulvinar rutrum, velit massa efficitur dolor, eget tristique neque urna non dolor. Nulla',
                       maxLines: 10,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                        color: Colors.grey,
-                      ),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer),
                       softWrap: true,
                     ),
                     const SizedBox(
@@ -202,6 +227,8 @@ class ServiceDescriptionPage extends StatelessWidget {
                         OutlinedButton.icon(
                           onPressed: () {
                             showModalBottomSheet(
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.background,
                               isScrollControlled: true,
                               useSafeArea: true,
                               constraints: BoxConstraints(
@@ -214,6 +241,11 @@ class ServiceDescriptionPage extends StatelessWidget {
                               builder: (context) {
                                 return Center(
                                   child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .background,
+                                    ),
                                     margin: const EdgeInsets.all(10),
                                     height: MediaQuery.of(context).size.height *
                                         0.8,
@@ -221,11 +253,15 @@ class ServiceDescriptionPage extends StatelessWidget {
                                       children: [
                                         Text(
                                           'Refer to',
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: lColorScheme.primary,
-                                            fontSize: 18,
-                                          ),
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyLarge!
+                                              .copyWith(
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .primary,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                         ),
                                         TextField(
                                           controller: ctrl,
@@ -235,10 +271,12 @@ class ServiceDescriptionPage extends StatelessWidget {
                                                 const EdgeInsets.all(
                                               10,
                                             ),
-                                            prefixIcon: const Icon(
+                                            prefixIcon: Icon(
                                               Icons.search,
                                               size: 30,
-                                              color: Colors.grey,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSecondaryContainer,
                                             ),
                                             border: OutlineInputBorder(
                                               borderRadius:
@@ -247,10 +285,14 @@ class ServiceDescriptionPage extends StatelessWidget {
                                               ),
                                             ),
                                             filled: true,
-                                            hintStyle: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.grey,
-                                            ),
+                                            hintStyle: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .onSecondaryContainer,
+                                                ),
                                             hintText: 'Computer repair',
                                             fillColor: Colors.grey[250],
                                           ),
@@ -269,14 +311,11 @@ class ServiceDescriptionPage extends StatelessWidget {
                                                               5),
                                                       height: 50,
                                                       width: 50,
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(100),
-                                                        child: Image.asset(
+                                                      child: const CircleAvatar(
+                                                        radius: 36.0,
+                                                        backgroundImage:
+                                                            AssetImage(
                                                           'assets/images/profile.jpg',
-                                                          height: 50,
-                                                          width: 50,
                                                         ),
                                                       ),
                                                     ),
@@ -287,21 +326,35 @@ class ServiceDescriptionPage extends StatelessWidget {
                                                       children: [
                                                         Text(
                                                           'Robin Papa',
-                                                          style: TextStyle(
-                                                              color:
-                                                                  lColorScheme
-                                                                      .primary,
-                                                              fontSize: 17,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodyMedium!
+                                                                  .copyWith(
+                                                                    color: Theme.of(
+                                                                            context)
+                                                                        .colorScheme
+                                                                        .primary,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
                                                         ),
-                                                        const Text(
+                                                        Text(
                                                           'Computer repair',
-                                                          style: TextStyle(
-                                                            color: Colors.grey,
-                                                            fontSize: 14,
-                                                          ),
+                                                          style:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodySmall!
+                                                                  .copyWith(
+                                                                    color: Theme.of(
+                                                                            context)
+                                                                        .colorScheme
+                                                                        .onSecondaryContainer,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
                                                         ),
                                                       ],
                                                     ),
@@ -310,8 +363,7 @@ class ServiceDescriptionPage extends StatelessWidget {
                                                       onPressed: () {},
                                                       style: ButtonStyle(
                                                         shape:
-                                                            WidgetStateProperty
-                                                                .all(
+                                                            MaterialStatePropertyAll(
                                                           RoundedRectangleBorder(
                                                             borderRadius:
                                                                 BorderRadius
@@ -344,7 +396,7 @@ class ServiceDescriptionPage extends StatelessWidget {
                           },
                           label: const Text('Refer'),
                           style: ButtonStyle(
-                            shape: WidgetStateProperty.all(
+                            shape: MaterialStatePropertyAll(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                   10,
@@ -363,7 +415,7 @@ class ServiceDescriptionPage extends StatelessWidget {
                           onPressed: () {},
                           label: const Text('Chat'),
                           style: ButtonStyle(
-                            shape: WidgetStateProperty.all(
+                            shape: MaterialStatePropertyAll(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                   10,

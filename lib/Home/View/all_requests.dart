@@ -5,10 +5,11 @@ import 'package:zenzzed/Home/View/service_card.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class AllRequests extends StatelessWidget {
-  AllRequests({super.key});
-  var controller = Get.put(AllRequestsController());
+  const AllRequests({super.key});
+
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(AllRequestsController());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
