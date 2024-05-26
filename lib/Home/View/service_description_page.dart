@@ -2,9 +2,67 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/themes/theme.dart';
 
-class ServiceDescriptionPage extends StatelessWidget {
-  ServiceDescriptionPage({super.key});
+class ServiceDescriptionPage extends StatefulWidget {
+  const ServiceDescriptionPage({super.key});
+
+  @override
+  State<ServiceDescriptionPage> createState() => _ServiceDescriptionPageState();
+}
+
+class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
   final TextEditingController ctrl = TextEditingController();
+  void _showAlertDialog() {
+    // Show the alert dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // Return the AlertDialog widget
+        return AlertDialog(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          elevation: 12.0,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+          title: Center(
+            child: Column(
+              children: [
+                Text(
+                  'Referral',
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleLarge!
+                      .copyWith(color: Theme.of(context).colorScheme.primary),
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade200,
+                      borderRadius: BorderRadius.circular(12.0)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.check,
+                      color: Theme.of(context).colorScheme.primary,
+                      size: 30.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          content: Text(
+            'Referred to Robin Papa about the service to provide is the computer repair system',
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                color: Theme.of(context).colorScheme.onSecondaryContainer),
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -233,9 +291,9 @@ class ServiceDescriptionPage extends StatelessWidget {
                               useSafeArea: true,
                               constraints: BoxConstraints(
                                 minHeight:
-                                    MediaQuery.of(context).size.height * 0.9,
+                                    MediaQuery.of(context).size.height * 0.8,
                                 maxHeight:
-                                    MediaQuery.of(context).size.height * 0.9,
+                                    MediaQuery.of(context).size.height * 0.8,
                               ),
                               context: context,
                               builder: (context) {
@@ -262,6 +320,9 @@ class ServiceDescriptionPage extends StatelessWidget {
                                                     .primary,
                                                 fontWeight: FontWeight.bold,
                                               ),
+                                        ),
+                                        const SizedBox(
+                                          height: 8.0,
                                         ),
                                         TextField(
                                           controller: ctrl,
@@ -360,7 +421,9 @@ class ServiceDescriptionPage extends StatelessWidget {
                                                     ),
                                                     const Spacer(),
                                                     OutlinedButton(
-                                                      onPressed: () {},
+                                                      onPressed: () {
+                                                        _showAlertDialog();
+                                                      },
                                                       style: ButtonStyle(
                                                         shape:
                                                             MaterialStatePropertyAll(
@@ -373,12 +436,17 @@ class ServiceDescriptionPage extends StatelessWidget {
                                                           ),
                                                         ),
                                                       ),
-                                                      child: const Text(
+                                                      child: Text(
                                                         'Refer',
-                                                        style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                        style: Theme.of(context)
+                                                            .textTheme
+                                                            .bodyMedium!
+                                                            .copyWith(
+                                                              color: Theme.of(
+                                                                      context)
+                                                                  .colorScheme
+                                                                  .primary,
+                                                            ),
                                                       ),
                                                     ),
                                                   ],

@@ -2,14 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/View/service_description_page.dart';
+import 'package:http/http.dart' as http;
 
 class ServiceCard extends StatelessWidget {
   const ServiceCard({super.key});
   @override
   Widget build(BuildContext context) {
+    String imageUrl =
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiU6pLt9y7YP9FaBuUhXNMMjKQkxdICQFejSW8XAIf0UNGmsi7Yv1KE1Skjw&s';
+
     return GestureDetector(
       onTap: () {
-        Get.to(() => ServiceDescriptionPage());
+        Get.to(() => const ServiceDescriptionPage());
       },
       child: Container(
         margin: const EdgeInsets.only(
@@ -18,7 +22,7 @@ class ServiceCard extends StatelessWidget {
           right: 10,
           bottom: 25,
         ),
-        height: 360,
+        height: 400,
         width: MediaQuery.of(context).size.width * 0.85,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.background,
@@ -42,7 +46,7 @@ class ServiceCard extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 155,
+                  height: 160,
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(
@@ -54,12 +58,24 @@ class ServiceCard extends StatelessWidget {
                     ),
                   ),
                   child: Image.network(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMZF4XHMymvmX6UtgadygRz3TvOkui87dTyQ&s',
-                    fit: BoxFit.cover,
+                    imageUrl,
+                    fit: BoxFit.fill,
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes!
+                              : null,
+                        ),
+                      );
+                    },
                   ),
                 ),
                 const SizedBox(
-                  height: 8.0,
+                  height: 5.0,
                 ),
                 Container(
                   padding: const EdgeInsets.all(8),

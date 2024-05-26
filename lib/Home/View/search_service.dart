@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/Controller/search_service_controller.dart';
-import 'package:zenzzed/themes/theme.dart';
 
 class SearchService extends StatelessWidget {
   const SearchService({super.key});

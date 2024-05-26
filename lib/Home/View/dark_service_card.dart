@@ -48,8 +48,21 @@ class DarkServiceCard extends StatelessWidget {
               ),
             ),
             child: Image.network(
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShnVBRRfNh_gnjFAMh5mTQx1ZTItN7S3d-ByqI4McUug&s',
-                fit: BoxFit.cover),
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShnVBRRfNh_gnjFAMh5mTQx1ZTItN7S3d-ByqI4McUug&s',
+              fit: BoxFit.cover,
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                );
+              },
+            ),
           ),
           Positioned(
             bottom: 0.0,

@@ -8,10 +8,16 @@ import 'package:zenzzed/Home/View/dark_service_card.dart';
 import 'package:zenzzed/Home/View/request_referral_card.dart';
 import 'package:zenzzed/Home/View/search_service.dart';
 import 'package:zenzzed/Home/View/service_card.dart';
-import 'package:zenzzed/themes/theme.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -196,7 +202,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 2,
+                height: MediaQuery.of(context).size.height / 1.87,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
@@ -283,22 +289,44 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar: NavigationBar(
+        height: 60.0,
         backgroundColor: Colors.grey.shade300,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.grid_view_rounded),
-            label: '',
+        indicatorColor: Theme.of(context).colorScheme.primary,
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        selectedIndex: currentPageIndex,
+        destinations: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: NavigationDestination(
+              icon: Icon(
+                Icons.grid_view_rounded,
+                color: currentPageIndex == 0
+                    ? Theme.of(context).colorScheme.onPrimary
+                    : Theme.of(context).colorScheme.primary,
+              ),
+              label: '',
+            ),
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(
               Icons.add,
+              color: currentPageIndex == 1
+                  ? Theme.of(context).colorScheme.onPrimary
+                  : Theme.of(context).colorScheme.primary,
             ),
             label: '',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
             icon: Icon(
               Icons.person_2_outlined,
+              color: currentPageIndex == 2
+                  ? Theme.of(context).colorScheme.onPrimary
+                  : Theme.of(context).colorScheme.primary,
             ),
             label: '',
           ),
