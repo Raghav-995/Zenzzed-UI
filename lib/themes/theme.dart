@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 var lColorScheme = ColorScheme.fromSeed(
-  seedColor: Colors.blue.shade900,
+  seedColor: const Color.fromARGB(108, 4, 30, 70),
+  onSecondaryContainer: Colors.grey,
 );
 
 var dColorScheme = ColorScheme.fromSeed(
-    seedColor: Colors.blue.shade900,
-    //const Color.fromARGB(237, 0, 4, 10),
+    seedColor: const Color.fromARGB(117, 1, 24, 58),
+
+    //const Color.fromARGB(237, 0,4, 10),
     onSecondaryContainer: Colors.white,
     background: Colors.black12);
 
@@ -58,7 +60,7 @@ ThemeData darkTheme = ThemeData().copyWith(
           borderRadius: BorderRadius.circular(12.0),
           // Adjust as needed
         ),
-        backgroundColor: lColorScheme.primary,
+        backgroundColor: dColorScheme.primary,
         padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 16.0),
       ),
     ),

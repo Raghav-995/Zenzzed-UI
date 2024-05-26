@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/View/service_description_page.dart';
-import 'package:http/http.dart' as http;
 
 class ServiceCard extends StatelessWidget {
   const ServiceCard({super.key});
@@ -42,241 +41,253 @@ class ServiceCard extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 160,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(
-                        10,
-                      ),
-                      topRight: Radius.circular(
-                        10,
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    width: double.infinity,
+                    height: 160,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(
+                          10,
+                        ),
+                        topRight: Radius.circular(
+                          10,
+                        ),
                       ),
                     ),
+                    child: Image.network(
+                      imageUrl,
+                      fit: BoxFit.fill,
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null
+                                ? loadingProgress.cumulativeBytesLoaded /
+                                    loadingProgress.expectedTotalBytes!
+                                : null,
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                  child: Image.network(
-                    imageUrl,
-                    fit: BoxFit.fill,
-                    loadingBuilder: (BuildContext context, Widget child,
-                        ImageChunkEvent? loadingProgress) {
-                      if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                  loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                      );
-                    },
+                  const SizedBox(
+                    height: 5.0,
                   ),
-                ),
-                const SizedBox(
-                  height: 5.0,
-                ),
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  margin: const EdgeInsets.all(10),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(
-                              right: 5,
-                              bottom: 5,
-                            ),
-                            child: const CircleAvatar(
-                              radius: 30.0,
-                              backgroundImage: AssetImage(
-                                'assets/images/profile.jpg',
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.all(10),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              margin: const EdgeInsets.only(
+                                right: 5,
+                                bottom: 5,
+                              ),
+                              child: const CircleAvatar(
+                                radius: 30.0,
+                                backgroundImage: AssetImage(
+                                  'assets/images/profile.jpg',
+                                ),
                               ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 4.0,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text('James smith',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .copyWith(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary,
-                                            fontWeight: FontWeight.bold,
-                                          )),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Wrap(
-                                    runSpacing: 0,
-                                    spacing: 0,
-                                    children: [
-                                      ActionChip(
-                                        side: const BorderSide(
-                                          width: 0,
-                                          style: BorderStyle.none,
-                                        ),
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 3,
-                                          vertical: 0,
-                                        ),
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(20),
+                            const SizedBox(
+                              width: 4.0,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text('James smith',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall!
+                                            .copyWith(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .primary,
+                                              fontWeight: FontWeight.bold,
+                                            )),
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Wrap(
+                                      runSpacing: 0,
+                                      spacing: 0,
+                                      children: [
+                                        ActionChip(
+                                          side: const BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
                                           ),
-                                        ),
-                                        label: Text(
-                                          "⭐ 4.0",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall!
-                                              .copyWith(
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .primary,
-                                                  fontWeight: FontWeight.bold),
-                                        ),
-                                        backgroundColor: Colors.grey[300],
-                                        onPressed: () {},
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    width: 8.0,
-                                  ),
-                                  Wrap(
-                                    runSpacing: 0,
-                                    spacing: 0,
-                                    children: [
-                                      ActionChip(
-                                        side: const BorderSide(
-                                          width: 0,
-                                          style: BorderStyle.none,
-                                        ),
-                                        padding: const EdgeInsets.all(0),
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(20),
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 3,
+                                            vertical: 0,
                                           ),
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(20),
+                                            ),
+                                          ),
+                                          label: Text(
+                                            "⭐ 4.0",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .primary,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                          ),
+                                          backgroundColor: Colors.grey[300],
+                                          onPressed: () {},
                                         ),
-                                        label: Text(
-                                          "Computer repair",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .bodySmall!
-                                              .copyWith(
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .primary,
-                                                  fontWeight: FontWeight.bold),
-                                        ),
-                                        backgroundColor: Colors.grey[300],
-                                        onPressed: () {},
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 8.0,
-                      ),
-                      Row(
-                        children: [
-                          Icon(Icons.location_on_outlined,
-                              size: 18.0,
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onSecondaryContainer),
-                          const SizedBox(
-                            width: 8.0,
-                          ),
-                          Text(
-                            '3529 Alexander Drive, Dallas',
-                            style:
-                                Theme.of(context).textTheme.bodySmall!.copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSecondaryContainer,
+                                      ],
                                     ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 12.0,
-                      ),
-                      Text(
-                        'I request you to please send my laptop for repairing as soon as possible so that i can get back to work',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    const SizedBox(
+                                      width: 8.0,
+                                    ),
+                                    Wrap(
+                                      runSpacing: 0,
+                                      spacing: 0,
+                                      children: [
+                                        ActionChip(
+                                          side: const BorderSide(
+                                            width: 0,
+                                            style: BorderStyle.none,
+                                          ),
+                                          padding: const EdgeInsets.all(0),
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(20),
+                                            ),
+                                          ),
+                                          label: Text(
+                                            "Computer repair",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .primary,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                          ),
+                                          backgroundColor: Colors.grey[300],
+                                          onPressed: () {},
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.location_on_outlined,
+                                size: 18.0,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSecondaryContainer),
+                            const SizedBox(
+                              width: 8.0,
+                            ),
+                            Text(
+                              '3529 Alexander Drive, Dallas',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer,
+                                  ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 12.0,
+                        ),
+                        Text(
+                          'I request you to please send my laptop for repairing as soon as possible so that i can get back to work',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer,
+                                  ),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+                        Divider(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer,
+                        ),
+                        const SizedBox(
+                          height: 4.0,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              CupertinoIcons.location,
+                              size: 20,
                               color: Theme.of(context)
                                   .colorScheme
                                   .onSecondaryContainer,
                             ),
-                      ),
-                      const SizedBox(
-                        height: 8.0,
-                      ),
-                      Divider(
-                        color:
-                            Theme.of(context).colorScheme.onSecondaryContainer,
-                      ),
-                      const SizedBox(
-                        height: 4.0,
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            CupertinoIcons.location,
-                            size: 20,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSecondaryContainer,
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            '3.mi',
-                            style:
-                                Theme.of(context).textTheme.bodySmall!.copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSecondaryContainer,
-                                    ),
-                          ),
-                          const Spacer(),
-                          Text(
-                            '25, Jul',
-                            style:
-                                Theme.of(context).textTheme.bodySmall!.copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSecondaryContainer,
-                                    ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
-              ],
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              '3.mi',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer,
+                                  ),
+                            ),
+                            const Spacer(),
+                            Text(
+                              '25, Jul',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
             Positioned(
               top: 130,

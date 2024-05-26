@@ -17,6 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int viewpage = 0;
   int currentPageIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -145,13 +146,21 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 ),
-                                child: ImageIcon(
-                                  size: 28,
-                                  Image.asset(
-                                          'assets/icons/${controller.iconAdd[index]}.png')
-                                      .image,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Get.to(() => AllRequests(
+                                          viewPage: viewpage,
+                                          title: controller.iconLabels[index],
+                                        ));
+                                  },
+                                  child: ImageIcon(
+                                    size: 28,
+                                    Image.asset(
+                                            'assets/icons/${controller.iconAdd[index]}.png')
+                                        .image,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
+                                  ),
                                 ),
                               ),
                               const SizedBox(height: 3.0),
@@ -189,7 +198,11 @@ class _HomePageState extends State<HomePage> {
                     const Spacer(),
                     TextButton(
                       onPressed: () {
-                        Get.to(() => const AllRequests());
+                        Get.to(() => AllRequests(
+                              viewPage: viewpage,
+                              title: 'Services request near you',
+                              searchTitle: 'Search for services',
+                            ));
                       },
                       child: Text(
                         'View all',
@@ -226,7 +239,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const Spacer(),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => AllRequests(
+                              viewPage: viewpage + 1,
+                              title: 'Based on your recent zenzzed',
+                              searchTitle: 'Search based on recent searches',
+                            ));
+                      },
                       child: Text(
                         'View all',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -263,7 +282,13 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const Spacer(),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => AllRequests(
+                              viewPage: viewpage + 2,
+                              title: 'Computer repair near you',
+                              searchTitle: 'Search on Computer repair',
+                            ));
+                      },
                       child: Text(
                         'View all',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
