@@ -65,8 +65,8 @@ class AllRequests extends StatelessWidget {
               child: ListView.builder(
                   itemCount: 3,
                   itemBuilder: (context, index) {
-                    return viewPage != 0
-                        ? viewPage != 1
+                    return viewPage != 1
+                        ? viewPage != 2
                             ? const DarkServiceCard()
                             : const DarkServiceCard()
                         : const ServiceCard();

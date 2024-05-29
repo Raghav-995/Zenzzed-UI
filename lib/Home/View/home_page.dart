@@ -122,7 +122,8 @@ class _HomePageState extends State<HomePage> {
               Container(
                 margin:
                     const EdgeInsets.only(top: 12.0, left: 20.0, right: 10.0),
-                height: MediaQuery.of(context).size.height / 10,
+                height: 70,
+                //height: MediaQuery.of(context).size.height / 10,
                 child: GetBuilder<HomePageController>(
                   init: Get.put(HomePageController()),
                   builder: (controller) {
@@ -130,53 +131,49 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.iconAdd.length,
                       itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {},
-                          child: Column(
-                            children: [
-                              Container(
-                                margin: const EdgeInsets.symmetric(
-                                    horizontal: 30.0),
-                                padding: const EdgeInsets.all(8.0),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade300,
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(
-                                      10,
-                                    ),
-                                  ),
-                                ),
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AllRequests(
-                                          viewPage: viewpage,
-                                          title: controller.iconLabels[index],
-                                        ));
-                                  },
-                                  child: ImageIcon(
-                                    size: 28,
-                                    Image.asset(
-                                            'assets/icons/${controller.iconAdd[index]}.png')
-                                        .image,
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
+                        return Column(
+                          children: [
+                            Container(
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 30.0),
+                              padding: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade300,
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(
+                                    10,
                                   ),
                                 ),
                               ),
-                              const SizedBox(height: 3.0),
-                              Text(
-                                controller.iconLabels[index],
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                        fontWeight: FontWeight.bold),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Get.to(() => AllRequests(
+                                        viewPage: viewpage,
+                                        title: controller.iconLabels[index],
+                                      ));
+                                },
+                                child: ImageIcon(
+                                  size: 28,
+                                  Image.asset(
+                                          'assets/icons/${controller.iconAdd[index]}.png')
+                                      .image,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
                               ),
-                            ],
-                          ),
+                            ),
+                            const SizedBox(height: 3.0),
+                            Text(
+                              controller.iconLabels[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         );
                       },
                     );
@@ -215,7 +212,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 1.87,
+                height: 420,
+                // height: MediaQuery.of(context).size.height / 1.87,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
@@ -258,7 +256,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 2,
+                height: 420,
+                // height: MediaQuery.of(context).size.height / 2,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
@@ -301,7 +300,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 2,
+                height: 420,
+                // height: MediaQuery.of(context).size.height / 2,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
