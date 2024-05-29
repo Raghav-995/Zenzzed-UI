@@ -8,7 +8,6 @@ import 'package:zenzzed/Home/View/dark_service_card.dart';
 import 'package:zenzzed/Home/View/request_referral_card.dart';
 import 'package:zenzzed/Home/View/search_service.dart';
 import 'package:zenzzed/Home/View/service_card_horizontal.dart';
-import 'package:zenzzed/Home/View/service_card_vertical.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

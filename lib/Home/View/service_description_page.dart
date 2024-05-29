@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:zenzzed/Home/Controller/home_page_controller.dart';
+import 'package:zenzzed/Home/View/chat.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class ServiceDescriptionPage extends StatefulWidget {
-  const ServiceDescriptionPage({super.key});
+  const ServiceDescriptionPage({
+    super.key,
+  });
 
   @override
   State<ServiceDescriptionPage> createState() => _ServiceDescriptionPageState();
@@ -11,6 +15,16 @@ class ServiceDescriptionPage extends StatefulWidget {
 
 class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
   final TextEditingController ctrl = TextEditingController();
+  HomePageController controller = HomePageController();
+
+  @override
+  void initState() {
+    super.initState();
+    // Access ScaffoldMessenger
+
+    // Show SnackBar on initialization
+  }
+
   void _showAlertDialog() {
     // Show the alert dialog
     showDialog(
@@ -280,7 +294,7 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                       height: 10,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         OutlinedButton.icon(
                           onPressed: () {
@@ -480,7 +494,12 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                           width: 20,
                         ),
                         OutlinedButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (builder) => const Chat()),
+                            );
+                          },
                           label: const Text('Chat'),
                           style: ButtonStyle(
                             shape: MaterialStatePropertyAll(
@@ -496,13 +515,102 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                           ),
                         ),
                       ],
-                    )
+                    ),
                   ],
                 ),
               ),
             ],
           ),
         ),
+      ),
+      floatingActionButton: TextButton(
+        child: Container(
+          decoration:
+              BoxDecoration(color: Theme.of(context).colorScheme.primary),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Service Cost',
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(color: Theme.of(context).colorScheme.onPrimary),
+            ),
+          ),
+        ),
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                shape: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(12.0)),
+                content: Column(
+                  children: [
+                    Text(
+                      'Service Cost',
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                    ),
+                    const SizedBox(
+                      height: 6.0,
+                    ),
+                    Text(
+                      'Please enter your service cost. We will tell to the recipient',
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer,
+                          ),
+                    ),
+                    const SizedBox(
+                      height: 8.0,
+                    ),
+                    TextField(
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16.0),
+                            borderSide: BorderSide(
+                              color: Theme.of(context).colorScheme.primary,
+                              width: 1.0,
+                            ),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.money,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer,
+                          ),
+                          labelText: '0.00',
+                          labelStyle: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .outlineVariant),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context).colorScheme.primary,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(16.0))),
+                    ),
+                    const SizedBox(
+                      height: 12.0,
+                    ),
+                    ElevatedButton(
+                      child: Text(
+                        'Quote',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                      onPressed: () {},
+                    )
+                  ],
+                )),
+          );
+        },
       ),
     );
   }

@@ -4,19 +4,26 @@ import 'package:get/get.dart';
 import 'package:zenzzed/Home/Controller/home_page_controller.dart';
 import 'package:zenzzed/Home/View/service_description_page.dart';
 
-class ServiceCardH extends StatelessWidget {
+class ServiceCardH extends StatefulWidget {
   const ServiceCardH({super.key, this.type});
   final Axis? type;
+
+  @override
+  State<ServiceCardH> createState() => _ServiceCardHState();
+}
+
+class _ServiceCardHState extends State<ServiceCardH> {
   @override
   Widget build(BuildContext context) {
     HomePageController controller = HomePageController();
+
     List<Map<String, String>> listData = controller.services;
     return GestureDetector(
       onTap: () {
         Get.to(() => const ServiceDescriptionPage());
       },
       child: ListView.builder(
-          scrollDirection: type!,
+          scrollDirection: widget.type!,
           itemCount: controller.services.length,
           itemBuilder: (context, index) {
             return Container(
@@ -62,7 +69,7 @@ class ServiceCardH extends StatelessWidget {
                           ),
                         ),
                         child: Image.network(
-                          controller.services[index]['image']!,
+                          listData[index]['image']!,
                           fit: BoxFit.fill,
                           loadingBuilder: (BuildContext context, Widget child,
                               ImageChunkEvent? loadingProgress) {
@@ -96,8 +103,8 @@ class ServiceCardH extends StatelessWidget {
                                   ),
                                   child: CircleAvatar(
                                       radius: 30.0,
-                                      backgroundImage: NetworkImage(controller
-                                          .services[index]['personimage']!)),
+                                      backgroundImage: NetworkImage(
+                                          listData[index]['personimage']!)),
                                 ),
                                 const SizedBox(
                                   width: 4.0,
@@ -145,8 +152,7 @@ class ServiceCardH extends StatelessWidget {
                                                 ),
                                               ),
                                               label: Text(
-                                                controller.services[index]
-                                                    ['ratings']!,
+                                                listData[index]['ratings']!,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodySmall!
@@ -182,8 +188,7 @@ class ServiceCardH extends StatelessWidget {
                                                 ),
                                               ),
                                               label: Text(
-                                                controller.services[index]
-                                                    ['worktype']!,
+                                                listData[index]['worktype']!,
                                                 style: Theme.of(context)
                                                     .textTheme
                                                     .bodySmall!
@@ -219,7 +224,7 @@ class ServiceCardH extends StatelessWidget {
                                   width: 8.0,
                                 ),
                                 Text(
-                                  controller.services[index]['location']!,
+                                  listData[index]['location']!,
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodySmall!
@@ -235,7 +240,7 @@ class ServiceCardH extends StatelessWidget {
                               height: 12.0,
                             ),
                             Text(
-                              controller.services[index]['description']!,
+                              listData[index]['description']!,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: Theme.of(context)
@@ -311,9 +316,16 @@ class ServiceCardH extends StatelessWidget {
                         ),
                       ),
                       child: IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            listData[index]['accept'] == 'No';
+                            print(listData);
+                          });
+                        },
                         icon: Icon(
-                          Icons.add,
+                          listData[index]['accept'] == 'Yes'
+                              ? Icons.check
+                              : Icons.add,
                           color: Theme.of(context).colorScheme.onPrimary,
                         ),
                       ),

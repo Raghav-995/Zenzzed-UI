@@ -27,6 +27,8 @@ ThemeData lightTheme = ThemeData().copyWith(
         padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 16.0),
       ),
     ),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: lColorScheme.primary),
     textTheme: ThemeData().textTheme.copyWith(
         titleLarge: TextStyle(
           fontWeight: FontWeight.bold,

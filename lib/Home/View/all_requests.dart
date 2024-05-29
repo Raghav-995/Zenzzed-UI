@@ -69,7 +69,7 @@ class AllRequests extends StatelessWidget {
                   ? Row(
                       children: [
                         SizedBox(
-                          height: MediaQuery.of(context).size.height / 1.3,
+                          height: MediaQuery.of(context).size.height / 1.17,
                           child: ServiceCardV(
                             type: type,
                           ),
