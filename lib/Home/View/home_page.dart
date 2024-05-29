@@ -7,7 +7,8 @@ import 'package:zenzzed/Home/View/all_requests.dart';
 import 'package:zenzzed/Home/View/dark_service_card.dart';
 import 'package:zenzzed/Home/View/request_referral_card.dart';
 import 'package:zenzzed/Home/View/search_service.dart';
-import 'package:zenzzed/Home/View/service_card.dart';
+import 'package:zenzzed/Home/View/service_card_horizontal.dart';
+import 'package:zenzzed/Home/View/service_card_vertical.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,6 +20,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int viewpage = 0;
   int currentPageIndex = 0;
+  HomePageController controller = HomePageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,6 +152,7 @@ class _HomePageState extends State<HomePage> {
                                   Get.to(() => AllRequests(
                                         viewPage: viewpage,
                                         title: controller.iconLabels[index],
+                                        type: Axis.vertical,
                                       ));
                                 },
                                 child: ImageIcon(
@@ -196,9 +199,10 @@ class _HomePageState extends State<HomePage> {
                     TextButton(
                       onPressed: () {
                         Get.to(() => AllRequests(
-                              viewPage: viewpage,
+                              viewPage: viewpage + 1,
                               title: 'Services request near you',
                               searchTitle: 'Search for services',
+                              type: Axis.vertical,
                             ));
                       },
                       child: Text(
@@ -211,17 +215,12 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 420,
-                // height: MediaQuery.of(context).size.height / 1.87,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return const ServiceCard();
-                  },
-                ),
-              ),
+              const SizedBox(
+                  height: 420,
+                  // height: MediaQuery.of(context).size.height / 1.87,
+                  child: ServiceCardH(
+                    type: Axis.horizontal,
+                  )),
               Container(
                 margin: const EdgeInsets.symmetric(
                   horizontal: 16.0,
@@ -239,7 +238,7 @@ class _HomePageState extends State<HomePage> {
                     TextButton(
                       onPressed: () {
                         Get.to(() => AllRequests(
-                              viewPage: viewpage + 1,
+                              viewPage: viewpage + 2,
                               title: 'Based on your recent zenzzed',
                               searchTitle: 'Search based on recent searches',
                             ));
@@ -283,7 +282,7 @@ class _HomePageState extends State<HomePage> {
                     TextButton(
                       onPressed: () {
                         Get.to(() => AllRequests(
-                              viewPage: viewpage + 2,
+                              viewPage: viewpage + 3,
                               title: 'Computer repair near you',
                               searchTitle: 'Search on Computer repair',
                             ));
