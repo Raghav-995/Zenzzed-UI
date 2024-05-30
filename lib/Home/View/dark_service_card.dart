@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:zenzzed/themes/theme.dart';
+//import 'package:zenzzed/themes/theme.dart';
 
 class DarkServiceCard extends StatelessWidget {
   const DarkServiceCard({super.key});
@@ -9,18 +9,17 @@ class DarkServiceCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(
         top: 10,
-        left: 5,
-        right: 5,
-        bottom: 30,
-      ),
-      // height: MediaQuery.of(context).size.height / 2.5,
-      height: 400,
+        left: 16,
+        right: 10,
+        bottom: 25,
+      ), // height: MediaQuery.of(context).size.height / 2.5,
+      height: 360,
       width: MediaQuery.of(context).size.width * 0.85,
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.9),
+        color: Theme.of(context).colorScheme.onPrimary,
         borderRadius: const BorderRadius.all(
           Radius.circular(
-            10,
+            12.0,
           ),
         ),
         boxShadow: [
@@ -32,48 +31,61 @@ class DarkServiceCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Stack(
         children: [
-          Column(
-            children: [
-              Container(
-                height: 155,
-                child: null,
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(
-                      10,
-                    ),
-                    topRight: Radius.circular(
-                      10,
-                    ),
-                  ),
+          Container(
+            height: 240,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.onSecondaryContainer,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(
+                  10,
+                ),
+                topRight: Radius.circular(
+                  10,
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                margin: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.black87.withOpacity(0.9),
-                ),
+            ),
+            child: Image.network(
+              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShnVBRRfNh_gnjFAMh5mTQx1ZTItN7S3d-ByqI4McUug&s',
+              fit: BoxFit.cover,
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                );
+              },
+            ),
+          ),
+          Positioned(
+            bottom: 0.0,
+            left: 0.0,
+            right: 0.0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black87.withOpacity(0.8),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 16.0),
                 child: Column(
                   children: [
                     Row(
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                            right: 5,
-                            bottom: 5,
-                          ),
-                          height: 70,
-                          width: 70,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(40),
-                            child: Image.asset(
-                              'assets/images/profile.jpg',
-                            ),
-                          ),
+                        const CircleAvatar(
+                          radius: 24.0,
+                          backgroundImage:
+                              AssetImage('assets/images/profile.jpg'),
+                        ),
+                        const SizedBox(
+                          width: 8.0,
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,10 +94,12 @@ class DarkServiceCard extends StatelessWidget {
                               children: [
                                 Text(
                                   'James smith',
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.87),
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                 ),
                               ],
                             ),
@@ -110,10 +124,14 @@ class DarkServiceCard extends StatelessWidget {
                                           Radius.circular(20),
                                         ),
                                       ),
-                                      label: const Text("⭐ 4.0"),
-                                      labelStyle: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
+                                      label: Text(
+                                        "⭐ 4.0",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium!
+                                            .copyWith(
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                       ),
                                       backgroundColor: Colors.grey[800],
                                       onPressed: () {},
@@ -138,7 +156,15 @@ class DarkServiceCard extends StatelessWidget {
                                           Radius.circular(20),
                                         ),
                                       ),
-                                      label: const Text("Computer repair"),
+                                      label: Text(
+                                        "Computer repair",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall!
+                                            .copyWith(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
                                       labelStyle: const TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
@@ -185,37 +211,48 @@ class DarkServiceCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      height: 20,
+                      height: 12.0,
                     ),
-                    const Row(
+                    Row(
                       children: [
                         Icon(
                           CupertinoIcons.location,
                           size: 20,
-                          color: Colors.grey,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Text(
                           '3.mi',
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer,
+                                  ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Text(
                           '25, Jul',
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
+                          style:
+                              Theme.of(context).textTheme.bodySmall!.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer,
+                                  ),
+                        ),
+                        const SizedBox(
+                          height: 8.0,
                         ),
                       ],
                     ),
                   ],
                 ),
-              )
-            ],
+              ),
+            ),
           ),
         ],
       ),

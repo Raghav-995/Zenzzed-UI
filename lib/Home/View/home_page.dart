@@ -7,11 +7,19 @@ import 'package:zenzzed/home/View/all_requests.dart';
 import 'package:zenzzed/home/View/dark_service_card.dart';
 import 'package:zenzzed/home/View/request_referral_card.dart';
 import 'package:zenzzed/home/View/search_service.dart';
-import 'package:zenzzed/home/View/service_card.dart';
-import 'package:zenzzed/themes/theme.dart';
+import 'package:zenzzed/home/View/service_card_horizontal.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int viewpage = 0;
+  int currentPageIndex = 0;
+  HomePageController controller = HomePageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,49 +31,38 @@ class HomePage extends StatelessWidget {
             child: Image.asset('assets/images/profile.jpg'),
           ),
         ),
-        title: const Column(
+        title: Column(
           children: [
             Text(
               'Good Morning,',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.white54,
-              ),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(fontSize: 12.0),
             ),
             Text(
               'John williams',
-              style: TextStyle(
-                fontSize: 17,
-                color: Colors.white,
-              ),
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
         ),
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(() => SearchService());
+              Get.to(() => const SearchService());
             },
-            icon: const Icon(
+            icon: Icon(
               CupertinoIcons.search,
-            ),
-            style: const ButtonStyle(
-              iconColor: WidgetStatePropertyAll<Color>(
-                Colors.white,
-              ),
+              color: Theme.of(context).colorScheme.onPrimary,
             ),
           ),
           IconButton(
             onPressed: () {},
-            icon: const Badge(
+            icon: Badge(
               isLabelVisible: true,
               child: Icon(
                 CupertinoIcons.bell,
-              ),
-            ),
-            style: const ButtonStyle(
-              iconColor: WidgetStatePropertyAll<Color>(
-                Colors.white,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
           ),
@@ -77,48 +74,25 @@ class HomePage extends StatelessWidget {
             children: [
               ImageSlideshow(
                 // autoPlayInterval: 3000,
-                indicatorColor: Colors.white,
+                indicatorColor: Theme.of(context).colorScheme.onPrimary,
                 // isLoop: true,
                 children: [
-                  Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(0),
-                    child: Image.asset(
-                      'assets/images/cleaning.jpg',
-                      height: MediaQuery.of(context).size.height / 4,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
+                  for (int i = 0; i < 4; i++)
+                    Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.all(0),
+                      child: Image.asset(
+                        'assets/images/cleaning.jpg',
+                        height: MediaQuery.of(context).size.height / 4,
+                        width: MediaQuery.of(context).size.width,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(0),
-                    child: Image.asset(
-                      'assets/images/cleaning.jpg',
-                      height: MediaQuery.of(context).size.height / 4,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(0),
-                    child: Image.asset(
-                      'assets/images/cleaning.jpg',
-                      height: MediaQuery.of(context).size.height / 4,
-                      width: MediaQuery.of(context).size.width,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
                 ],
               ),
               Container(
-                margin: const EdgeInsets.only(
-                  top: 20,
-                  left: 10,
-                  right: 10,
-                  bottom: 10,
-                ),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
                 child: const Column(
                   children: [
                     RequestReferralCard(
@@ -134,28 +108,23 @@ class HomePage extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(
-                  horizontal: 15,
-                  vertical: 10,
+                  horizontal: 16.0,
+                  vertical: 6.0,
                 ),
                 child: Row(
                   children: [
-                    Text(
-                      'Top searched services',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).colorScheme.primary,
-                        fontSize: 20,
-                      ),
-                    ),
+                    Text('Top searched services',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),
               Container(
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 5,
-                ),
+                margin:
+                    const EdgeInsets.only(top: 12.0, left: 20.0, right: 10.0),
                 height: 70,
+                //height: MediaQuery.of(context).size.height / 10,
                 child: GetBuilder<HomePageController>(
                   init: Get.put(HomePageController()),
                   builder: (controller) {
@@ -163,50 +132,50 @@ class HomePage extends StatelessWidget {
                       scrollDirection: Axis.horizontal,
                       itemCount: controller.iconAdd.length,
                       itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {},
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 40,
-                                width: 40,
-                                margin:
-                                    const EdgeInsets.symmetric(horizontal: 30),
-                                padding: const EdgeInsets.all(8),
-                                decoration: BoxDecoration(
-                                  color: MediaQuery.of(context)
-                                              .platformBrightness ==
-                                          Brightness.dark
-                                      ? Colors.black38
-                                      : Colors.grey[350],
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(
-                                      10,
-                                    ),
+                        return Column(
+                          children: [
+                            Container(
+                              margin:
+                                  const EdgeInsets.symmetric(horizontal: 30.0),
+                              padding: const EdgeInsets.all(8.0),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade300,
+                                borderRadius: const BorderRadius.all(
+                                  Radius.circular(
+                                    10,
                                   ),
                                 ),
+                              ),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Get.to(() => AllRequests(
+                                        viewPage: viewpage,
+                                        title: controller.iconLabels[index],
+                                        type: Axis.vertical,
+                                      ));
+                                },
                                 child: ImageIcon(
-                                  size: 30,
+                                  size: 28,
                                   Image.asset(
-                                    'assets/icons/${controller.iconAdd[index]}.png',
-                                  ).image,
-                                  color: MediaQuery.of(context)
-                                              .platformBrightness ==
-                                          Brightness.dark
-                                      ? Colors.white.withOpacity(0.9)
-                                      : Colors.black,
+                                          'assets/icons/${controller.iconAdd[index]}.png')
+                                      .image,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
                                 ),
                               ),
-                              Text(
-                                controller.iconLabels[index],
-                                style: TextStyle(
-                                  color: Theme.of(context).colorScheme.primary,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
-                                ),
-                              ),
-                            ],
-                          ),
+                            ),
+                            const SizedBox(height: 3.0),
+                            Text(
+                              controller.iconLabels[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         );
                       },
                     );
@@ -216,64 +185,77 @@ class HomePage extends StatelessWidget {
               const Divider(),
               Container(
                 margin: const EdgeInsets.symmetric(
-                  horizontal: 20,
+                  horizontal: 16.0,
                 ),
                 child: Row(
                   children: [
-                    Text(
-                      'Service request near you',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
-                    ),
+                    Text('Services request near you',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            )),
                     const Spacer(),
                     TextButton(
                       onPressed: () {
-                        Get.to(() => AllRequests());
+                        Get.to(() => AllRequests(
+                              viewPage: viewpage + 1,
+                              title: 'Services request near you',
+                              searchTitle: 'Search for services',
+                              type: Axis.vertical,
+                            ));
                       },
-                      child: const Text('View all'),
+                      child: Text(
+                        'View all',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(
-                height: 450,
-                width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return const ServiceCard();
-                  },
-                ),
-              ),
+              const SizedBox(
+                  height: 420,
+                  // height: MediaQuery.of(context).size.height / 1.87,
+                  child: ServiceCardH(
+                    type: Axis.horizontal,
+                  )),
               Container(
                 margin: const EdgeInsets.symmetric(
-                  horizontal: 20,
+                  horizontal: 16.0,
                 ),
                 child: Row(
                   children: [
                     Text(
                       'Based on your recent zenzzed',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     const Spacer(),
                     TextButton(
-                      onPressed: () {},
-                      child: const Text('View all'),
+                      onPressed: () {
+                        Get.to(() => AllRequests(
+                              viewPage: viewpage + 2,
+                              title: 'Based on your recent zenzzed',
+                              searchTitle: 'Search based on recent searches',
+                            ));
+                      },
+                      child: Text(
+                        'View all',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
                     ),
                   ],
                 ),
               ),
               SizedBox(
-                height: 450,
-                width: MediaQuery.of(context).size.width,
+                height: 420,
+                // height: MediaQuery.of(context).size.height / 2,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
@@ -284,29 +266,40 @@ class HomePage extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(
-                  horizontal: 20,
+                  horizontal: 16.0,
                 ),
                 child: Row(
                   children: [
                     Text(
                       'Computer repair near you',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 17,
-                      ),
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
                     const Spacer(),
                     TextButton(
-                      onPressed: () {},
-                      child: const Text('View all'),
+                      onPressed: () {
+                        Get.to(() => AllRequests(
+                              viewPage: viewpage + 3,
+                              title: 'Computer repair near you',
+                              searchTitle: 'Search on Computer repair',
+                            ));
+                      },
+                      child: Text(
+                        'View all',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
                     ),
                   ],
                 ),
               ),
               SizedBox(
-                height: 450,
-                width: MediaQuery.of(context).size.width,
+                height: 420,
+                // height: MediaQuery.of(context).size.height / 2,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
@@ -318,6 +311,49 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: NavigationBar(
+        height: 60.0,
+        backgroundColor: Colors.grey.shade300,
+        indicatorColor: Theme.of(context).colorScheme.primary,
+        onDestinationSelected: (int index) {
+          setState(() {
+            currentPageIndex = index;
+          });
+        },
+        selectedIndex: currentPageIndex,
+        destinations: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: NavigationDestination(
+              icon: Icon(
+                Icons.grid_view_rounded,
+                color: currentPageIndex == 0
+                    ? Theme.of(context).colorScheme.onPrimary
+                    : Theme.of(context).colorScheme.primary,
+              ),
+              label: '',
+            ),
+          ),
+          NavigationDestination(
+            icon: Icon(
+              Icons.add,
+              color: currentPageIndex == 1
+                  ? Theme.of(context).colorScheme.onPrimary
+                  : Theme.of(context).colorScheme.primary,
+            ),
+            label: '',
+          ),
+          NavigationDestination(
+            icon: Icon(
+              Icons.person_2_outlined,
+              color: currentPageIndex == 2
+                  ? Theme.of(context).colorScheme.onPrimary
+                  : Theme.of(context).colorScheme.primary,
+            ),
+            label: '',
+          ),
+        ],
       ),
     );
   }

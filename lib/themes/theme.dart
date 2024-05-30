@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 var lColorScheme = ColorScheme.fromSeed(
-  seedColor: const Color.fromARGB(0, 3, 18, 37),
+  seedColor: const Color.fromARGB(108, 4, 30, 70),
   onSecondaryContainer: Colors.grey,
 );
 
 var dColorScheme = ColorScheme.fromSeed(
-    seedColor: const Color.fromARGB(110, 1, 4, 19),
+    seedColor: const Color.fromARGB(117, 1, 24, 58),
+
+    //const Color.fromARGB(237, 0,4, 10),
     onSecondaryContainer: Colors.white,
     background: Colors.black12);
 
 ThemeData lightTheme = ThemeData().copyWith(
     colorScheme: lColorScheme,
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
     scaffoldBackgroundColor: lColorScheme.onPrimary,
     appBarTheme: AppBarTheme(backgroundColor: lColorScheme.primary),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -25,6 +27,8 @@ ThemeData lightTheme = ThemeData().copyWith(
         padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 16.0),
       ),
     ),
+    floatingActionButtonTheme:
+        FloatingActionButtonThemeData(backgroundColor: lColorScheme.primary),
     textTheme: ThemeData().textTheme.copyWith(
         titleLarge: TextStyle(
           fontWeight: FontWeight.bold,
@@ -50,7 +54,7 @@ ThemeData lightTheme = ThemeData().copyWith(
 ThemeData darkTheme = ThemeData().copyWith(
     colorScheme: dColorScheme,
     brightness: Brightness.dark,
-    appBarTheme: AppBarTheme(backgroundColor: lColorScheme.primary),
+    appBarTheme: AppBarTheme(backgroundColor: dColorScheme.primary),
     scaffoldBackgroundColor: dColorScheme.background,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -58,7 +62,7 @@ ThemeData darkTheme = ThemeData().copyWith(
           borderRadius: BorderRadius.circular(12.0),
           // Adjust as needed
         ),
-        backgroundColor: lColorScheme.primary,
+        backgroundColor: dColorScheme.primary,
         padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 16.0),
       ),
     ),
