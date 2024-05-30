@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:get/get.dart';
-import 'package:zenzzed/Home/Controller/home_page_controller.dart';
-import 'package:zenzzed/Home/View/all_requests.dart';
-import 'package:zenzzed/Home/View/dark_service_card.dart';
-import 'package:zenzzed/Home/View/request_referral_card.dart';
-import 'package:zenzzed/Home/View/search_service.dart';
-import 'package:zenzzed/Home/View/service_card.dart';
+import 'package:zenzzed/home/Controller/home_page_controller.dart';
+import 'package:zenzzed/home/View/all_requests.dart';
+import 'package:zenzzed/home/View/dark_service_card.dart';
+import 'package:zenzzed/home/View/request_referral_card.dart';
+import 'package:zenzzed/home/View/search_service.dart';
+import 'package:zenzzed/home/View/service_card.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class HomePage extends StatelessWidget {
@@ -143,7 +143,7 @@ class HomePage extends StatelessWidget {
                       'Top searched services',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: lColorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                         fontSize: 20,
                       ),
                     ),
@@ -152,10 +152,10 @@ class HomePage extends StatelessWidget {
               ),
               Container(
                 margin: const EdgeInsets.symmetric(
-                  horizontal: 20,
+                  horizontal: 10,
                   vertical: 5,
                 ),
-                height: MediaQuery.of(context).size.height / 10,
+                height: 70,
                 child: GetBuilder<HomePageController>(
                   init: Get.put(HomePageController()),
                   builder: (controller) {
@@ -174,7 +174,11 @@ class HomePage extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 30),
                                 padding: const EdgeInsets.all(8),
                                 decoration: BoxDecoration(
-                                  color: Colors.grey[350],
+                                  color: MediaQuery.of(context)
+                                              .platformBrightness ==
+                                          Brightness.dark
+                                      ? Colors.black38
+                                      : Colors.grey[350],
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(
                                       10,
@@ -184,15 +188,19 @@ class HomePage extends StatelessWidget {
                                 child: ImageIcon(
                                   size: 30,
                                   Image.asset(
-                                          'assets/icons/${controller.iconAdd[index]}.png')
-                                      .image,
-                                  color: Colors.black,
+                                    'assets/icons/${controller.iconAdd[index]}.png',
+                                  ).image,
+                                  color: MediaQuery.of(context)
+                                              .platformBrightness ==
+                                          Brightness.dark
+                                      ? Colors.white.withOpacity(0.9)
+                                      : Colors.black,
                                 ),
                               ),
                               Text(
                                 controller.iconLabels[index],
                                 style: TextStyle(
-                                  color: lColorScheme.primary,
+                                  color: Theme.of(context).colorScheme.primary,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 15,
                                 ),
@@ -215,9 +223,9 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Service request near you',
                       style: TextStyle(
-                        color: lColorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 17,
                       ),
                     ),
                     const Spacer(),
@@ -231,8 +239,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 2,
-                width: MediaQuery.of(context).size.width * 0.9,
+                height: 450,
+                width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
@@ -250,9 +258,9 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Based on your recent zenzzed',
                       style: TextStyle(
-                        color: lColorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 17,
                       ),
                     ),
                     const Spacer(),
@@ -264,8 +272,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 2,
-                width: MediaQuery.of(context).size.width * 0.9,
+                height: 450,
+                width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
@@ -283,9 +291,9 @@ class HomePage extends StatelessWidget {
                     Text(
                       'Computer repair near you',
                       style: TextStyle(
-                        color: lColorScheme.primary,
+                        color: Theme.of(context).colorScheme.primary,
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 17,
                       ),
                     ),
                     const Spacer(),
@@ -297,8 +305,8 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height / 2,
-                width: MediaQuery.of(context).size.width * 0.9,
+                height: 450,
+                width: MediaQuery.of(context).size.width,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: 3,
@@ -310,27 +318,6 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: lColorScheme.primary.withOpacity(0.3),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.grid_view_rounded),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add,
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person_2_outlined,
-            ),
-            label: '',
-          ),
-        ],
       ),
     );
   }

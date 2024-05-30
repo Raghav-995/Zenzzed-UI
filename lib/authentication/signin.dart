@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:zenzzed/Home/View/home_page.dart';
+import 'package:get/get.dart';
+import 'package:zenzzed/home/View/home_page.dart';
+import 'package:zenzzed/home/View/home_screen.dart';
 import 'package:zenzzed/authentication/signup.dart';
-import 'package:zenzzed/widgets/homepage.dart';
+// import 'package:zenzzed/widgets/homepage.dart';
 
 class SignIn extends StatelessWidget {
   const SignIn({super.key});
@@ -90,8 +92,7 @@ class SignIn extends StatelessWidget {
             ),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (c) => const HomePage()));
+                  Get.offAll(() => const HomeScreen());
                 },
                 child: Text(
                   'Continue',

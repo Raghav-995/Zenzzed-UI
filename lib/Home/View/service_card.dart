@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zenzzed/Home/View/service_description_page.dart';
+import 'package:zenzzed/home/View/service_description_page.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class ServiceCard extends StatelessWidget {
@@ -19,7 +19,7 @@ class ServiceCard extends StatelessWidget {
           right: 10,
           bottom: 25,
         ),
-        height: 400,
+        // height: 300,
         width: MediaQuery.of(context).size.width * 0.85,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -40,13 +40,14 @@ class ServiceCard extends StatelessWidget {
         child: Stack(
           children: [
             Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
                   height: 155,
                   child: null,
-                  decoration: const BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.only(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(
                         10,
                       ),
@@ -59,7 +60,9 @@ class ServiceCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(8),
                   margin: const EdgeInsets.all(10),
+                  // height: 250,
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Row(
                         children: [
@@ -85,7 +88,8 @@ class ServiceCard extends StatelessWidget {
                                   Text(
                                     'James smith',
                                     style: TextStyle(
-                                      color: lColorScheme.primary,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -115,7 +119,9 @@ class ServiceCard extends StatelessWidget {
                                         label: const Text("⭐ 4.0"),
                                         labelStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: lColorScheme.primary,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                         ),
                                         backgroundColor: Colors.grey[350],
                                         onPressed: () {},
@@ -143,7 +149,9 @@ class ServiceCard extends StatelessWidget {
                                         label: const Text("Computer repair"),
                                         labelStyle: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          color: lColorScheme.primary,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                         ),
                                         backgroundColor: Colors.grey[350],
                                         onPressed: () {},
@@ -157,6 +165,8 @@ class ServiceCard extends StatelessWidget {
                         ],
                       ),
                       const Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Icon(
                             Icons.location_on_outlined,
@@ -187,13 +197,13 @@ class ServiceCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        height: 2,
+                        height: 5,
                       ),
                       const Divider(
                         color: Colors.grey,
                       ),
                       const SizedBox(
-                        height: 2,
+                        height: 5,
                       ),
                       const Row(
                         children: [
@@ -221,7 +231,7 @@ class ServiceCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
             Positioned(
@@ -229,7 +239,7 @@ class ServiceCard extends StatelessWidget {
               right: 15,
               child: Container(
                 decoration: BoxDecoration(
-                  color: lColorScheme.primary,
+                  color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(
                     50,
                   ),

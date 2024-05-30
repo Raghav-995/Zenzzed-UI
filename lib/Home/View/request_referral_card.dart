@@ -18,7 +18,7 @@ class RequestReferralCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           10,
         ),
-        color: lColorScheme.primary,
+        color: Theme.of(context).colorScheme.primary,
       ),
       child: TextButton(
         onPressed: () {},

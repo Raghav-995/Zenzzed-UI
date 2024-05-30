@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:zenzzed/Home/Controller/search_service_controller.dart';
+import 'package:zenzzed/home/Controller/search_service_controller.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class SearchService extends StatelessWidget {
   SearchService({super.key});
-  var controller = Get.put(SearchServiceController());
+  final controller = Get.put(SearchServiceController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.white,
+        backgroundColor:
+            MediaQuery.of(context).platformBrightness == Brightness.light
+                ? Colors.white
+                : Colors.black,
+        // Theme.of(context).colorScheme.,
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.arrow_back_ios,
             size: 20,
+            color: Theme.of(context).colorScheme.primary,
           ),
           onPressed: () {
             Get.back();
@@ -26,7 +32,7 @@ class SearchService extends StatelessWidget {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: lColorScheme.primary,
+            color: Theme.of(context).colorScheme.primary,
           ),
         ),
       ),
@@ -82,6 +88,10 @@ class SearchService extends StatelessWidget {
                             Image.asset(
                               'assets/icons/${controller.iconAdd[index]}.png',
                             ).image,
+                            color: MediaQuery.of(context).platformBrightness ==
+                                    Brightness.dark
+                                ? Colors.white
+                                : Colors.black,
                             size: 30,
                           ),
                           const SizedBox(
@@ -90,8 +100,8 @@ class SearchService extends StatelessWidget {
                           Text(
                             controller.serviceNames[index],
                             style: TextStyle(
-                              fontSize: 20,
-                              color: lColorScheme.primary,
+                              fontSize: 17,
+                              color: Theme.of(context).colorScheme.primary,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

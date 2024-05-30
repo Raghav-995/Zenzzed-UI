@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zenzzed/Home/View/home_page.dart';
+import 'package:zenzzed/home/View/home_page.dart';
 import 'package:zenzzed/splashscreen.dart';
 import 'package:zenzzed/themes/theme.dart';
 
