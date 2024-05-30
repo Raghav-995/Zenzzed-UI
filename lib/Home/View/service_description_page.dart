@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/Controller/home_page_controller.dart';
-import 'package:zenzzed/Home/View/chat.dart';
+import 'package:zenzzed/Home/View/chats/chat.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class ServiceDescriptionPage extends StatefulWidget {
