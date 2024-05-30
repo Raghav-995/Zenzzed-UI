@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:zenzzed/Home/Controller/chat_controller.dart';
+import 'package:zenzzed/Home/View/chats/qoutes/qoutesmodalsheet1.dart';
 import 'package:zenzzed/Home/View/chats/workstatus.dart';
 
-class Chat extends StatelessWidget {
-  const Chat({super.key});
+class Chat extends StatefulWidget {
+  const Chat({
+    super.key,
+  });
+
+  @override
+  State<Chat> createState() => _ChatState();
+}
+
+class _ChatState extends State<Chat> {
   @override
   Widget build(context) {
+    bool showQoutes = true;
     List<Map<String, dynamic>> messages = [];
     for (var chat in allChat) {
       for (var message in chat['chat']!) {
@@ -16,6 +26,17 @@ class Chat extends StatelessWidget {
         });
       }
     }
+    void showQoutes1() {
+      showModalBottomSheet(
+        context: context,
+        builder: (cxt) => const Qoutes1(),
+        shape: const OutlineInputBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(16.0),
+                topRight: Radius.circular(16.0))),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.onPrimary,
@@ -49,8 +70,13 @@ class Chat extends StatelessWidget {
           actions: [
             TextButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (builder) => const WorkStatus()));
+                  showQoutes == true
+                      ? showQoutes1()
+                      : Navigator.of(context).push(MaterialPageRoute(
+                          builder: (builder) => const WorkStatus()));
+                  setState(() {
+                    showQoutes = false;
+                  });
                 },
                 child: Container(
                     decoration: BoxDecoration(
@@ -61,7 +87,7 @@ class Chat extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                        'Work Status',
+                        showQoutes == true ? 'Final Qoute' : 'Work Status',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                             color: Theme.of(context).colorScheme.primary),
                       ),
@@ -69,47 +95,43 @@ class Chat extends StatelessWidget {
           ]),
       body: Stack(
         children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: messages.length,
-              itemBuilder: (context, index) {
-                var message = messages[index];
-                var direction = message['direction'];
-                var chatMessage = message['message'];
+          ListView.builder(
+            itemCount: messages.length,
+            itemBuilder: (context, index) {
+              var message = messages[index];
+              var direction = message['direction'];
+              var chatMessage = message['message'];
 
-                // Convert the chat message map to a list of text widgets
-                List<Widget> messageWidgets =
-                    chatMessage.entries.map<Widget>((entry) {
-                  return Container(
-                    margin: const EdgeInsets.symmetric(vertical: 2.0),
-                    padding: const EdgeInsets.all(10.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.0),
-                        color: direction != 'left'
-                            ? Theme.of(context).colorScheme.primary
-                            : Theme.of(context)
-                                .colorScheme
-                                .onSecondaryContainer),
-                    child: Text('${entry.value}'),
-                  );
-                }).toList();
-
+              // Convert the chat message map to a list of text widgets
+              List<Widget> messageWidgets =
+                  chatMessage.entries.map<Widget>((entry) {
                 return Container(
-                  width: 150,
-                  alignment: direction == 'left'
-                      ? Alignment.centerLeft
-                      : Alignment.centerRight,
-                  margin: const EdgeInsets.symmetric(
-                      vertical: 5.0, horizontal: 10.0),
-                  child: Column(
-                    crossAxisAlignment: direction == 'left'
-                        ? CrossAxisAlignment.start
-                        : CrossAxisAlignment.end,
-                    children: messageWidgets,
-                  ),
+                  margin: const EdgeInsets.symmetric(vertical: 2.0),
+                  padding: const EdgeInsets.all(10.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.0),
+                      color: direction != 'left'
+                          ? Theme.of(context).colorScheme.primary
+                          : Theme.of(context).colorScheme.onSecondaryContainer),
+                  child: Text('${entry.value}'),
                 );
-              },
-            ),
+              }).toList();
+
+              return Container(
+                width: 150,
+                alignment: direction == 'left'
+                    ? Alignment.centerLeft
+                    : Alignment.centerRight,
+                margin:
+                    const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+                child: Column(
+                  crossAxisAlignment: direction == 'left'
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.end,
+                  children: messageWidgets,
+                ),
+              );
+            },
           ),
           Align(
             alignment: Alignment.bottomLeft,

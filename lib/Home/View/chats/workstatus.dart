@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/View/chats/chat.dart';
+import 'package:zenzzed/Home/View/chats/update_status.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class WorkStatus extends StatelessWidget {
@@ -233,7 +234,10 @@ class WorkStatus extends StatelessWidget {
                     height: 6.0,
                   ),
                   ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (builder) => const UpdateStatus()));
+                      },
                       child: Text(
                         'Update work status',
                         style: Theme.of(context).textTheme.bodySmall,
