@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zenzzed/Home/Controller/search_service_controller.dart';
+import 'package:zenzzed/home/Controller/search_service_controller.dart';
 import 'package:zenzzed/Home/View/all_requests.dart';
 import 'package:zenzzed/Home/View/category_request.dart';
 
@@ -11,7 +11,6 @@ class SearchService extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var controller = Get.put(SearchServiceController());
-
     Widget homepage = Column(
       children: [
         const SizedBox(

@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:get/get.dart';
-import 'package:zenzzed/Home/Controller/home_page_controller.dart';
-import 'package:zenzzed/Home/View/all_requests.dart';
-import 'package:zenzzed/Home/View/dark_service_card.dart';
-import 'package:zenzzed/Home/View/request_referral_card.dart';
-import 'package:zenzzed/Home/View/search_service.dart';
-import 'package:zenzzed/Home/View/service_card_horizontal.dart';
+import 'package:zenzzed/home/Controller/home_page_controller.dart';
+import 'package:zenzzed/home/View/all_requests.dart';
+import 'package:zenzzed/home/View/dark_service_card.dart';
+import 'package:zenzzed/home/View/request_referral_card.dart';
+import 'package:zenzzed/home/View/search_service.dart';
+import 'package:zenzzed/home/View/service_card_horizontal.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(() => const SearchService(
+              Get.to(() => SearchService(
                     iconsShow: true,
                   ));
             },
@@ -191,37 +191,43 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Row(
                   children: [
-                    Text('Services request near you',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            )),
+                    Text(
+                      'Services request near you',
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
                     const Spacer(),
                     TextButton(
                       onPressed: () {
-                        Get.to(() => AllRequests(
-                              viewPage: viewpage + 1,
-                              title: 'Services request near you',
-                              searchTitle: 'Search for services',
-                              type: Axis.vertical,
-                            ));
+                        Get.to(
+                          () => AllRequests(
+                            viewPage: viewpage + 1,
+                            title: 'Services request near you',
+                            searchTitle: 'Search for services',
+                            type: Axis.vertical,
+                          ),
+                        );
                       },
                       child: Text(
                         'View all',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.bold),
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(
-                  height: 420,
-                  // height: MediaQuery.of(context).size.height / 1.87,
-                  child: ServiceCardH(
-                    type: Axis.horizontal,
-                  )),
+                height: 430,
+                // height: MediaQuery.of(context).size.height / 1.87,
+                child: ServiceCardH(
+                  type: Axis.horizontal,
+                ),
+              ),
               Container(
                 margin: const EdgeInsets.symmetric(
                   horizontal: 16.0,
@@ -336,15 +342,15 @@ class _HomePageState extends State<HomePage> {
                 ),
                 isScrollControlled: true,
                 context: context,
-                builder: (cxt) => const SearchService(
+                builder: (cxt) => SearchService(
                       iconsShow: false,
                     ));
           } else if (index == 1) {
             Navigator.push(context,
-                MaterialPageRoute(builder: (builder) => const SearchService()));
+                MaterialPageRoute(builder: (builder) => SearchService()));
           } else {
             Navigator.push(context,
-                MaterialPageRoute(builder: (builder) => const SearchService()));
+                MaterialPageRoute(builder: (builder) => SearchService()));
           }
         },
         selectedIndex: currentPageIndex,
