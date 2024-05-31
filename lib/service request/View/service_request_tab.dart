@@ -21,12 +21,12 @@ class ServiceRequestTab extends StatelessWidget {
             ),
             child: TextButton(
               style: ButtonStyle(
-                shape: WidgetStateProperty.all(
+                shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                backgroundColor: WidgetStateProperty.all(
+                backgroundColor: MaterialStateProperty.all(
                   Colors.blueGrey[900],
                 ),
               ),
@@ -190,15 +190,15 @@ class ServiceRequestTab extends StatelessWidget {
                     );
                   },
                   style: ButtonStyle(
-                    padding: WidgetStateProperty.all(
+                    padding: MaterialStateProperty.all(
                       const EdgeInsets.all(15),
                     ),
-                    shape: WidgetStateProperty.all(
+                    shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    backgroundColor: WidgetStateProperty.all(
+                    backgroundColor: MaterialStateProperty.all(
                       Colors.grey[200],
                     ),
                   ),
@@ -263,13 +263,13 @@ class ServiceRequestTab extends StatelessWidget {
                 children: [
                   OutlinedButton.icon(
                     style: ButtonStyle(
-                      padding: WidgetStateProperty.all(
+                      padding: MaterialStateProperty.all(
                         const EdgeInsets.symmetric(
                           vertical: 0,
                           horizontal: 10,
                         ),
                       ),
-                      shape: WidgetStateProperty.all(
+                      shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
