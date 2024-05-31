@@ -60,6 +60,7 @@ class Qoutes1 extends StatelessWidget {
                 ),
                 onPressed: () {
                   showModalBottomSheet(
+                      backgroundColor: Theme.of(context).colorScheme.background,
                       shape: const OutlineInputBorder(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(16.0),

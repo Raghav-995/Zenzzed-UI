@@ -324,6 +324,17 @@ class _HomePageState extends State<HomePage> {
           });
           if (index == 0) {
             showModalBottomSheet(
+                shape: const OutlineInputBorder(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30.0),
+                        topRight: Radius.circular(30.0))),
+                backgroundColor: Theme.of(context).colorScheme.background,
+                useSafeArea: true,
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height * 0.99,
+                  maxHeight: MediaQuery.of(context).size.height * 0.99,
+                ),
+                isScrollControlled: true,
                 context: context,
                 builder: (cxt) => const SearchService(
                       iconsShow: false,

@@ -28,42 +28,51 @@ class _ChatState extends State<Chat> {
     }
     void showQoutes1() {
       showModalBottomSheet(
+        backgroundColor: Theme.of(context).colorScheme.background,
         context: context,
         builder: (cxt) => const Qoutes1(),
         shape: const OutlineInputBorder(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16.0),
-                topRight: Radius.circular(16.0))),
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0))),
       );
     }
 
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.onPrimary,
-          leadingWidth: 100.0,
-          leading: const CircleAvatar(
-            backgroundImage: NetworkImage(
-              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnoPN8K0ROp9fSFAthzNm1c77VKBe5T22jtg&s',
-            ),
-
-            radius: 20.0, // Set the desired radius
-          ),
-          title: Column(
+          title: Row(
             children: [
-              Text(
-                'James Smith',
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.bold),
+              const CircleAvatar(
+                backgroundImage: NetworkImage(
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnoPN8K0ROp9fSFAthzNm1c77VKBe5T22jtg&s',
+                ),
+
+                radius: 20.0, // Set the desired radius
               ),
               const SizedBox(
-                height: 2.0,
+                width: 8.0,
               ),
-              Text(
-                'Computer Repair',
-                style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      color: Theme.of(context).colorScheme.onSecondaryContainer,
-                    ),
+              Column(
+                children: [
+                  Text(
+                    'James Smith',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 2.0,
+                  ),
+                  Text(
+                    'Computer Repair',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer,
+                        ),
+                  ),
+                ],
               ),
             ],
           ),
