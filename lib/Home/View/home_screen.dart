@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zenzzed/Home/View/search_service.dart';
 import 'package:zenzzed/home/View/home_page.dart';
 import 'package:zenzzed/Service%20Request/View/service_request_tab.dart';
 import 'package:zenzzed/profile/views/profile_tab.dart';
@@ -31,6 +32,24 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             currInd = index;
           });
+          if (index == 0) {
+            showModalBottomSheet(
+                shape: const OutlineInputBorder(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30.0),
+                        topRight: Radius.circular(30.0))),
+                backgroundColor: Theme.of(context).colorScheme.background,
+                useSafeArea: true,
+                constraints: BoxConstraints(
+                  minHeight: MediaQuery.of(context).size.height * 0.99,
+                  maxHeight: MediaQuery.of(context).size.height * 0.99,
+                ),
+                isScrollControlled: true,
+                context: context,
+                builder: (cxt) => const SearchService(
+                      iconsShow: false,
+                    ));
+          }
         },
         selectedIndex: currInd,
         destinations: [
