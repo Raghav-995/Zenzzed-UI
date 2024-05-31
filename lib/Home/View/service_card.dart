@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/home/View/service_description_page.dart';
-import 'package:zenzzed/themes/theme.dart';
 
 class ServiceCard extends StatelessWidget {
   const ServiceCard({super.key});
@@ -10,7 +9,7 @@ class ServiceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(() => ServiceDescriptionPage());
+        Get.to(() => const ServiceDescriptionPage());
       },
       child: Container(
         margin: const EdgeInsets.only(

@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(() => const SearchService());
+              Get.to(() => SearchService());
             },
             icon: Icon(
               CupertinoIcons.search,
@@ -189,37 +189,43 @@ class _HomePageState extends State<HomePage> {
                 ),
                 child: Row(
                   children: [
-                    Text('Services request near you',
-                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                              color: Theme.of(context).colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            )),
+                    Text(
+                      'Services request near you',
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                    ),
                     const Spacer(),
                     TextButton(
                       onPressed: () {
-                        Get.to(() => AllRequests(
-                              viewPage: viewpage + 1,
-                              title: 'Services request near you',
-                              searchTitle: 'Search for services',
-                              type: Axis.vertical,
-                            ));
+                        Get.to(
+                          () => AllRequests(
+                            viewPage: viewpage + 1,
+                            title: 'Services request near you',
+                            searchTitle: 'Search for services',
+                            type: Axis.vertical,
+                          ),
+                        );
                       },
                       child: Text(
                         'View all',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.bold),
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
                       ),
                     ),
                   ],
                 ),
               ),
               const SizedBox(
-                  height: 420,
-                  // height: MediaQuery.of(context).size.height / 1.87,
-                  child: ServiceCardH(
-                    type: Axis.horizontal,
-                  )),
+                height: 430,
+                // height: MediaQuery.of(context).size.height / 1.87,
+                child: ServiceCardH(
+                  type: Axis.horizontal,
+                ),
+              ),
               Container(
                 margin: const EdgeInsets.symmetric(
                   horizontal: 16.0,
@@ -311,49 +317,6 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-      ),
-      bottomNavigationBar: NavigationBar(
-        height: 60.0,
-        backgroundColor: Colors.grey.shade300,
-        indicatorColor: Theme.of(context).colorScheme.primary,
-        onDestinationSelected: (int index) {
-          setState(() {
-            currentPageIndex = index;
-          });
-        },
-        selectedIndex: currentPageIndex,
-        destinations: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: NavigationDestination(
-              icon: Icon(
-                Icons.grid_view_rounded,
-                color: currentPageIndex == 0
-                    ? Theme.of(context).colorScheme.onPrimary
-                    : Theme.of(context).colorScheme.primary,
-              ),
-              label: '',
-            ),
-          ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.add,
-              color: currentPageIndex == 1
-                  ? Theme.of(context).colorScheme.onPrimary
-                  : Theme.of(context).colorScheme.primary,
-            ),
-            label: '',
-          ),
-          NavigationDestination(
-            icon: Icon(
-              Icons.person_2_outlined,
-              color: currentPageIndex == 2
-                  ? Theme.of(context).colorScheme.onPrimary
-                  : Theme.of(context).colorScheme.primary,
-            ),
-            label: '',
-          ),
-        ],
       ),
     );
   }

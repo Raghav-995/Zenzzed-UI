@@ -18,16 +18,16 @@ class ProfileTab extends StatelessWidget {
           ),
         ),
       ),
-      body: GestureDetector(
-        onTap: () {
-          Get.to(() => EditProfile());
-        },
-        child: Container(
-          margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
+      body: Container(
+        margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => EditProfile());
+                },
+                child: Container(
                   padding: const EdgeInsets.all(10),
                   height: 120,
                   decoration: BoxDecoration(
@@ -94,50 +94,15 @@ class ProfileTab extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Get.to(() => MyServiceRequests());
-                  },
-                  child: Container(
-                    height: 60,
-                    margin: const EdgeInsets.symmetric(vertical: 5),
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(
-                        10,
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        const Text(
-                          'My service requests',
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const Spacer(),
-                        Text(
-                          '04',
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const Icon(
-                          Icons.keyboard_arrow_right_rounded,
-                          color: Colors.grey,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => MyServiceRequests());
+                },
+                child: Container(
                   height: 60,
                   margin: const EdgeInsets.symmetric(vertical: 5),
                   padding: const EdgeInsets.all(10),
@@ -150,7 +115,7 @@ class ProfileTab extends StatelessWidget {
                   child: Row(
                     children: [
                       const Text(
-                        'Applied service requests',
+                        'My service requests',
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 16,
@@ -159,7 +124,7 @@ class ProfileTab extends StatelessWidget {
                       ),
                       const Spacer(),
                       Text(
-                        '02',
+                        '04',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold,
@@ -172,227 +137,262 @@ class ProfileTab extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 60,
-                  margin: const EdgeInsets.symmetric(vertical: 1),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(
-                      10,
-                    ),
+              ),
+              Container(
+                height: 60,
+                margin: const EdgeInsets.symmetric(vertical: 5),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
-                  child: Row(
-                    children: [
-                      const Text(
-                        'Your Referrals',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                ),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Applied service requests',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '02',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 60,
+                margin: const EdgeInsets.symmetric(vertical: 1),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(
+                    10,
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Your Referrals',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '03',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                height: 60,
+                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.symmetric(vertical: 1),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(
+                    10,
+                  ),
+                ),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Referral earnings',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      height: 50,
+                      padding: const EdgeInsets.only(
+                        top: 5,
+                        left: 10,
+                        right: 10,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.grey[350],
+                        borderRadius: BorderRadius.circular(
+                          10,
                         ),
                       ),
-                      const Spacer(),
-                      Text(
-                        '03',
+                      child: Text(
+                        '\$359.45',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: Colors.grey,
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  height: 60,
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.symmetric(vertical: 1),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(
-                      10,
                     ),
-                  ),
-                  child: Row(
-                    children: [
-                      const Text(
-                        'Referral earnings',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Spacer(),
-                      Container(
-                        height: 50,
-                        padding: const EdgeInsets.only(
-                          top: 5,
-                          left: 10,
-                          right: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.grey[350],
-                          borderRadius: BorderRadius.circular(
-                            10,
-                          ),
-                        ),
-                        child: Text(
-                          '\$359.45',
-                          style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                      const Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: Colors.grey,
-                      )
-                    ],
+                    const Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                height: 60,
+                margin: const EdgeInsets.symmetric(vertical: 1),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
                 ),
-                Container(
-                  height: 60,
-                  margin: const EdgeInsets.symmetric(vertical: 1),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(
-                      10,
+                child: Row(
+                  children: [
+                    const Text(
+                      'Notifications',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    children: [
-                      const Text(
-                        'Notifications',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+                    const Spacer(),
+                    Text(
+                      '',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
                       ),
-                      const Spacer(),
-                      Text(
-                        '',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: Colors.grey,
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 60,
-                  margin: const EdgeInsets.symmetric(vertical: 1),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(
-                      10,
                     ),
+                    const Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 60,
+                margin: const EdgeInsets.symmetric(vertical: 1),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
-                  child: const Row(
-                    children: [
-                      Text(
-                        'Change password',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.keyboard_arrow_right_rounded,
+                ),
+                child: const Row(
+                  children: [
+                    Text(
+                      'Change password',
+                      style: TextStyle(
                         color: Colors.grey,
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 60,
-                  padding: const EdgeInsets.all(10),
-                  margin: const EdgeInsets.symmetric(vertical: 1),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(
-                      10,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  child: const Row(
-                    children: [
-                      Text(
-                        'Terms & conditions',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Spacer(),
-                      Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: Colors.grey,
-                      )
-                    ],
+                    Spacer(),
+                    Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 60,
+                padding: const EdgeInsets.all(10),
+                margin: const EdgeInsets.symmetric(vertical: 1),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
                 ),
-                Container(
-                  height: 60,
-                  margin: const EdgeInsets.symmetric(vertical: 1),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(
-                      10,
+                child: const Row(
+                  children: [
+                    Text(
+                      'Terms & conditions',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    children: [
-                      const Text(
-                        'Help',
-                        style: TextStyle(
-                          color: Colors.grey,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Spacer(),
-                      Text(
-                        '',
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const Icon(
-                        Icons.keyboard_arrow_right_rounded,
-                        color: Colors.grey,
-                      )
-                    ],
+                    Spacer(),
+                    Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                height: 60,
+                margin: const EdgeInsets.symmetric(vertical: 1),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(
+                    10,
                   ),
                 ),
-              ],
-            ),
+                child: Row(
+                  children: [
+                    const Text(
+                      'Help',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    Text(
+                      '',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Icon(
+                      Icons.keyboard_arrow_right_rounded,
+                      color: Colors.grey,
+                    )
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),

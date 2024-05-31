@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/home/Controller/search_service_controller.dart';
 
@@ -80,10 +79,6 @@ class SearchService extends StatelessWidget {
                             Image.asset(
                               'assets/icons/${controller.iconAdd[index]}.png',
                             ).image,
-                            color: MediaQuery.of(context).platformBrightness ==
-                                    Brightness.dark
-                                ? Colors.white
-                                : Colors.black,
                             size: 30,
                             color: Theme.of(context)
                                 .colorScheme
