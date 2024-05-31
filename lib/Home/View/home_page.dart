@@ -49,7 +49,9 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(() => const SearchService());
+              Get.to(() => const SearchService(
+                    iconsShow: true,
+                  ));
             },
             icon: Icon(
               CupertinoIcons.search,
@@ -320,6 +322,19 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             currentPageIndex = index;
           });
+          if (index == 0) {
+            showModalBottomSheet(
+                context: context,
+                builder: (cxt) => const SearchService(
+                      iconsShow: false,
+                    ));
+          } else if (index == 1) {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (builder) => const SearchService()));
+          } else {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (builder) => const SearchService()));
+          }
         },
         selectedIndex: currentPageIndex,
         destinations: [

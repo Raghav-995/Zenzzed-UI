@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/Controller/home_page_controller.dart';
 import 'package:zenzzed/Home/View/chats/chat.dart';
+import 'package:zenzzed/Home/View/chats/qoutes/qoutesmodalsheet1.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class ServiceDescriptionPage extends StatefulWidget {
@@ -21,8 +22,80 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
   void initState() {
     super.initState();
     // Access ScaffoldMessenger
-
-    // Show SnackBar on initialization
+    Future.delayed(Duration(microseconds: 2), () {
+      showModalBottomSheet(
+        context: context,
+        builder: (ctx) => SizedBox(
+          height: 210,
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Service cost',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                ),
+                const SizedBox(
+                  height: 6.0,
+                ),
+                Text(
+                  'Please enter your service cost. We will tell to the recipient',
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        color:
+                            Theme.of(context).colorScheme.onSecondaryContainer,
+                      ),
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                TextField(
+                  decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16.0),
+                        borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary,
+                          width: 1.0,
+                        ),
+                      ),
+                      hintText: '\$  0.00',
+                      labelStyle: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(
+                              color:
+                                  Theme.of(context).colorScheme.outlineVariant),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Theme.of(context).colorScheme.primary,
+                            width: 1.0,
+                          ),
+                          borderRadius: BorderRadius.circular(16.0))),
+                ),
+                const SizedBox(
+                  height: 12.0,
+                ),
+                Center(
+                  child: ElevatedButton(
+                    child: Text(
+                      'Quote',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (builde) => const Chat()));
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    });
   }
 
   void _showAlertDialog() {

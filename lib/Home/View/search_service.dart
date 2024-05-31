@@ -1,34 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/Controller/search_service_controller.dart';
+import 'package:zenzzed/Home/View/all_requests.dart';
 
 class SearchService extends StatelessWidget {
-  const SearchService({super.key});
-
+  const SearchService({super.key, this.iconsShow});
+  final bool? iconsShow;
   @override
   Widget build(BuildContext context) {
+    Widget categoryTitle = Text(
+      'Choose Catgory',
+      style: Theme.of(context)
+          .textTheme
+          .bodyLarge!
+          .copyWith(color: Theme.of(context).colorScheme.primary),
+    );
     var controller = Get.put(SearchServiceController());
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.background,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            size: 20,
-          ),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-        title: Text('Search Service',
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-                fontWeight: FontWeight.bold)),
-      ),
+      appBar: iconsShow!
+          ? AppBar(
+              centerTitle: true,
+              backgroundColor: Theme.of(context).colorScheme.background,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back_ios,
+                  size: 20,
+                ),
+                onPressed: () {
+                  Get.back();
+                },
+              ),
+              title: Text('Search Service',
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      color: Theme.of(context).colorScheme.primary,
+                      fontWeight: FontWeight.bold)),
+            )
+          : null,
       body: Center(
         child: Column(
           children: [
+            if (iconsShow == false) categoryTitle,
             Container(
               margin: const EdgeInsets.all(8.0),
               child: TextField(
@@ -74,27 +85,41 @@ class SearchService extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          ImageIcon(
-                            Image.asset(
-                              'assets/icons/${controller.iconAdd[index]}.png',
-                            ).image,
-                            size: 30,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSecondaryContainer,
-                          ),
+                          if (iconsShow == true)
+                            ImageIcon(
+                              Image.asset(
+                                'assets/icons/${controller.iconAdd[index]}.png',
+                              ).image,
+                              size: 30,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSecondaryContainer,
+                            ),
                           const SizedBox(
                             width: 30,
                           ),
-                          Text(
-                            controller.serviceNames[index],
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    fontWeight: FontWeight.bold),
+                          TextButton(
+                            child: Text(
+                              controller.serviceNames[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (builder) => AllRequests(
+                                            type: Axis.vertical,
+                                            viewPage: 0,
+                                            title:
+                                                controller.serviceNames[index],
+                                          )));
+                            },
                           ),
                         ],
                       ),
