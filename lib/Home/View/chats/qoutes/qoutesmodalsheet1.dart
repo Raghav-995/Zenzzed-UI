@@ -39,10 +39,6 @@ class Qoutes1 extends StatelessWidget {
                       width: 1.0,
                     ),
                   ),
-                  prefixText: '\$',
-                  prefixStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color:
-                          Theme.of(context).colorScheme.onSecondaryContainer),
                   hintText: '\$  0.00',
                   labelStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.outlineVariant),
