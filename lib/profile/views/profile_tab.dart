@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/profile/views/edit_profile.dart';
 import 'package:zenzzed/profile/views/my_service_requests.dart';
+import 'package:zenzzed/profile/views/notifications.dart';
+import 'package:zenzzed/profile/views/referrals_earnings.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
@@ -211,88 +213,101 @@ class ProfileTab extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                height: 60,
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.symmetric(vertical: 1),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      'Referral earnings',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (builder) => const ReferralsEarnings(),
+                  ));
+                },
+                child: Container(
+                  height: 60,
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.symmetric(vertical: 1),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(
+                      10,
                     ),
-                    const Spacer(),
-                    Container(
-                      height: 50,
-                      padding: const EdgeInsets.only(
-                        top: 5,
-                        left: 10,
-                        right: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[350],
-                        borderRadius: BorderRadius.circular(
-                          10,
+                  ),
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Referral earnings',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      child: Text(
-                        '\$359.45',
+                      const Spacer(),
+                      Container(
+                        height: 50,
+                        padding: const EdgeInsets.only(
+                          top: 5,
+                          left: 10,
+                          right: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[350],
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                        ),
+                        child: Text(
+                          '\$359.45',
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_right_rounded,
+                        color: Colors.grey,
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (builder) => const Notifications()));
+                },
+                child: Container(
+                  height: 60,
+                  margin: const EdgeInsets.symmetric(vertical: 1),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(
+                      10,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Notifications',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        '',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Colors.grey,
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 60,
-                margin: const EdgeInsets.symmetric(vertical: 1),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      'Notifications',
-                      style: TextStyle(
+                      const Icon(
+                        Icons.keyboard_arrow_right_rounded,
                         color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      '',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Colors.grey,
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(

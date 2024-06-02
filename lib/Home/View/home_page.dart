@@ -8,6 +8,7 @@ import 'package:zenzzed/home/View/dark_service_card.dart';
 import 'package:zenzzed/home/View/request_referral_card.dart';
 import 'package:zenzzed/home/View/search_service.dart';
 import 'package:zenzzed/home/View/service_card_horizontal.dart';
+import 'package:zenzzed/profile/views/notifications.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(() => SearchService(
+              Get.to(() => const SearchService(
                     iconsShow: true,
                   ));
             },
@@ -59,7 +60,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (cxt) => const Notifications()));
+            },
             icon: Badge(
               isLabelVisible: true,
               child: Icon(
