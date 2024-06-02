@@ -18,7 +18,7 @@ class _CategoryRequestState extends State<CategoryRequest> {
       'Lindsay Tucker',
       'Willard Bowman'
     ];
-    String? _selectedValue;
+    String? selectedValue;
     return Center(
       child: Container(
         decoration: BoxDecoration(
@@ -79,10 +79,10 @@ class _CategoryRequestState extends State<CategoryRequest> {
                         Radio(
                             activeColor: Theme.of(context).colorScheme.primary,
                             value: referers[index],
-                            groupValue: _selectedValue,
+                            groupValue: selectedValue,
                             onChanged: (value) {
                               setState(() {
-                                _selectedValue = value;
+                                selectedValue = value;
                               });
                             }),
                         const SizedBox(

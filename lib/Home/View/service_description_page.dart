@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/Controller/home_page_controller.dart';
@@ -192,97 +191,93 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                 margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 child: Row(
                   children: [
-                    Container(
-                      // margin: EdgeInsets.all(10),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              const CircleAvatar(
-                                radius: 30.0,
-                                backgroundImage: AssetImage(
-                                  'assets/images/profile.jpg',
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            const CircleAvatar(
+                              radius: 30.0,
+                              backgroundImage: AssetImage(
+                                'assets/images/profile.jpg',
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 12.0,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('James smith',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                const SizedBox(
+                                  height: 4.0,
                                 ),
-                              ),
-                              const SizedBox(
-                                width: 12.0,
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text('James smith',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyMedium!
-                                          .copyWith(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .primary,
-                                            fontWeight: FontWeight.bold,
-                                          )),
-                                  const SizedBox(
-                                    height: 4.0,
+                                Text(
+                                  '⭐ 4.0',
+                                  style: TextStyle(
+                                    color: lColorScheme.primary,
+                                    fontWeight: FontWeight.bold,
                                   ),
-                                  Text(
-                                    '⭐ 4.0',
-                                    style: TextStyle(
-                                      color: lColorScheme.primary,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 10.0,
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.location_on_outlined,
-                                size: 20,
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onSecondaryContainer,
-                              ),
-                              const SizedBox(
-                                width: 8.0,
-                              ),
-                              Text('3529 Alexander Drive, Dallas',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      .copyWith(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                      )),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              const SizedBox(
-                                width: 8.0,
-                              ),
-                              Text(
-                                '3 miles away from your location',
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 10.0,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on_outlined,
+                              size: 20,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onSecondaryContainer,
+                            ),
+                            const SizedBox(
+                              width: 8.0,
+                            ),
+                            Text('3529 Alexander Drive, Dallas',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodySmall!
                                     .copyWith(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSecondaryContainer,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    )),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const SizedBox(
+                              width: 8.0,
+                            ),
+                            Text(
+                              '3 miles away from your location',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSecondaryContainer,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                     const Spacer(),
                     SizedBox(

@@ -14,8 +14,8 @@ class ServiceRequestsCard extends StatelessWidget {
         ],
         color: Colors.white,
       ),
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(
+      margin: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(
         10,
       ),
       child: Column(

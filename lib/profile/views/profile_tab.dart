@@ -6,6 +6,7 @@ import 'package:zenzzed/profile/views/my_service_requests.dart';
 import 'package:zenzzed/profile/views/notifications.dart';
 import 'package:zenzzed/profile/views/referrals_earnings.dart';
 import 'package:zenzzed/profile/views/termscondition.dart';
+import 'package:zenzzed/profile/views/your_referrals.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
@@ -180,39 +181,45 @@ class ProfileTab extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                height: 60,
-                margin: const EdgeInsets.symmetric(vertical: 1),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(
-                    10,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (ctx) => const YourReferrals()));
+                },
+                child: Container(
+                  height: 60,
+                  margin: const EdgeInsets.symmetric(vertical: 1),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(
+                      10,
+                    ),
                   ),
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      'Your Referrals',
-                      style: TextStyle(
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Your Referrals',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        '03',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_right_rounded,
                         color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      '03',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Colors.grey,
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               GestureDetector(

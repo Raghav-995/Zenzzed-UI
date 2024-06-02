@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 import 'package:zenzzed/service%20request/Controller/service_request_controller.dart';
 
 class ServiceRequestTab extends StatelessWidget {
-  ServiceRequestTab({super.key});
-  final controller = Get.put(ServiceRequestController());
-  var img = 0;
+  const ServiceRequestTab({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ServiceRequestController());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -61,7 +62,6 @@ class ServiceRequestTab extends StatelessWidget {
                           ),
                         ],
                       ),
-                      actions: [],
                     );
                   },
                 );
@@ -336,7 +336,7 @@ class ServiceRequestTab extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
+                    SizedBox(
                       // margin: EdgeInsets.all(5),
                       height: 90,
                       child: ListView.builder(

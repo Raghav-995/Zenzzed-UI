@@ -53,7 +53,7 @@ class MyServiceRequests extends StatelessWidget {
                   contentPadding: const EdgeInsets.all(0),
                   hintText: 'Search for service...',
                   enabledBorder: const OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(
+                    borderRadius: BorderRadius.all(
                       Radius.circular(12),
                     ),
                     borderSide: BorderSide.none,
@@ -69,7 +69,7 @@ class MyServiceRequests extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               ListView.builder(
@@ -77,7 +77,7 @@ class MyServiceRequests extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: 1,
                 itemBuilder: (context, index) {
-                  return ServiceRequestsCard();
+                  return const ServiceRequestsCard();
                 },
               ),
             ],
