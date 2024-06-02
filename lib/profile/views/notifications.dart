@@ -36,17 +36,17 @@ class Notifications extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(
-            height: 14.0,
+            height: 40.0,
           ),
           Text(
             'Notifications',
             style: Theme.of(context)
                 .textTheme
-                .bodyLarge!
+                .titleLarge!
                 .copyWith(color: Theme.of(context).colorScheme.primary),
           ),
           const SizedBox(
-            height: 6.0,
+            height: 24.0,
           ),
           for (int j = 0; j < 2; j++)
             for (int i = 0; i < 3; i++)

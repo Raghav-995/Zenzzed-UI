@@ -11,17 +11,20 @@ class TermsConditions extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(
+              height: 40.0,
+            ),
             Center(
               child: Text(
                 'Terms & Conditions',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyLarge!
+                    .titleLarge!
                     .copyWith(color: Theme.of(context).colorScheme.primary),
               ),
             ),
             const SizedBox(
-              height: 16.0,
+              height: 24.0,
             ),
             Text(
               '1) Introduction',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zenzzed/authentication/otp.dart';
 
 class ChangePassword extends StatelessWidget {
   const ChangePassword({super.key});
@@ -11,18 +12,21 @@ class ChangePassword extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(
+                height: 40.0,
+              ),
               Align(
                 alignment: Alignment.center,
                 child: Text(
                   'Change Password',
                   style: Theme.of(context)
                       .textTheme
-                      .bodyLarge!
+                      .titleLarge!
                       .copyWith(color: Theme.of(context).colorScheme.primary),
                 ),
               ),
               const SizedBox(
-                height: 70.0,
+                height: 120.0,
               ),
               Text(
                 'Set a strong password and protect your account from others',
@@ -114,8 +118,8 @@ class ChangePassword extends StatelessWidget {
               Center(
                 child: ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (builder) => const ChangePassword()));
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (builder) => const OTP()));
                     },
                     child: Text('Change Password',
                         style: Theme.of(context).textTheme.bodyMedium)),

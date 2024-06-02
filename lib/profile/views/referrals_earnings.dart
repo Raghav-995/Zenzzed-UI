@@ -29,14 +29,14 @@ class ReferralsEarnings extends StatelessWidget {
                 children: [
                   Text(
                     referrals['worktype']!,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontSize: 12.0,
-                        color: Theme.of(context).colorScheme.primary),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodySmall!
+                        .copyWith(color: Theme.of(context).colorScheme.primary),
                   ),
                   Text(
                     referrals['date']!,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontSize: 12.0,
                         color:
                             Theme.of(context).colorScheme.onSecondaryContainer),
                   ),
@@ -48,7 +48,6 @@ class ReferralsEarnings extends StatelessWidget {
               Text(
                 referrals['description']!,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    fontSize: 12.0,
                     color: Theme.of(context).colorScheme.onSecondaryContainer),
               ),
               const SizedBox(
@@ -60,7 +59,6 @@ class ReferralsEarnings extends StatelessWidget {
                   Text(
                     referrals['quotation']!,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        fontSize: 12.0,
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).colorScheme.primary),
                   ),
@@ -68,7 +66,6 @@ class ReferralsEarnings extends StatelessWidget {
                     referrals['myearnings']!,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontWeight: FontWeight.bold,
-                        fontSize: 12.0,
                         color: Theme.of(context).colorScheme.primary),
                   )
                 ],
@@ -80,77 +77,71 @@ class ReferralsEarnings extends StatelessWidget {
     );
 
     return Scaffold(
-        body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 8.0,
+        body: SingleChildScrollView(
+      child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 40.0,
+              ),
+              Text(
+                'Referral Earnings',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(color: Theme.of(context).colorScheme.primary),
+              ),
+              const SizedBox(
+                height: 24.0,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                Text(
-                  'Referral Earnings',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(color: Theme.of(context).colorScheme.primary),
-                ),
-                const SizedBox(
-                  height: 8.0,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: Text(
-                          'Today',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall!
-                              .copyWith(
-                                  fontSize: 12.0,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSecondaryContainer),
-                        ),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Text(
+                        'Today',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                for (int i = 0; i < 3; i++) container,
-                const SizedBox(
-                  height: 6.0,
+              ),
+              for (int i = 0; i < 3; i++) container,
+              const SizedBox(
+                height: 6.0,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.grey[100],
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(6.0),
-                        child: Text(
-                          'Yesterday',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodySmall!
-                              .copyWith(
-                                  fontSize: 12.0,
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSecondaryContainer),
-                        ),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Text(
+                        'Yesterday',
+                        style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSecondaryContainer),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                for (int i = 0; i < 3; i++) container,
-              ],
-            )));
+              ),
+              for (int i = 0; i < 3; i++) container,
+            ],
+          )),
+    ));
   }
 }
