@@ -36,7 +36,7 @@ class Notifications extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(
-            height: 10.0,
+            height: 14.0,
           ),
           Text(
             'Notifications',
@@ -51,9 +51,12 @@ class Notifications extends StatelessWidget {
           for (int j = 0; j < 2; j++)
             for (int i = 0; i < 3; i++)
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
                 child: Container(
-                  decoration: BoxDecoration(color: Colors.grey[100]),
+                  decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(12.0)),
                   child: Padding(
                     padding: const EdgeInsets.all(6.0),
                     child: Column(
@@ -106,12 +109,12 @@ class Notifications extends StatelessWidget {
                               .copyWith(
                                   color:
                                       Theme.of(context).colorScheme.secondary),
-                        )
+                        ),
                       ],
                     ),
                   ),
                 ),
-              )
+              ),
         ],
       ),
     );
