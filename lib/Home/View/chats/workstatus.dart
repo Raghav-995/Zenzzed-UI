@@ -258,26 +258,34 @@ class WorkStatus extends StatelessWidget {
                   const SizedBox(
                     height: 6.0,
                   ),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (_) => const Chat()));
-                      },
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.chat,
-                            color: Theme.of(context).colorScheme.onPrimary,
+                  OutlinedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (builder) => const Chat()),
+                      );
+                    },
+                    label: Text(
+                      'Chat',
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary),
+                    ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(
+                          Theme.of(context).colorScheme.primary),
+                      padding: const MaterialStatePropertyAll(
+                          EdgeInsets.symmetric(
+                              vertical: 12.0, horizontal: 30.0)),
+                      shape: MaterialStatePropertyAll(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            10,
                           ),
-                          const SizedBox(
-                            width: 6.0,
-                          ),
-                          Text(
-                            'Chat',
-                            style: Theme.of(context).textTheme.bodySmall,
-                          )
-                        ],
-                      )),
+                        ),
+                      ),
+                    ),
+                    icon: Icon(Icons.chat_bubble_outline_outlined,
+                        color: Theme.of(context).colorScheme.onPrimary),
+                  ),
                 ],
               ),
             )

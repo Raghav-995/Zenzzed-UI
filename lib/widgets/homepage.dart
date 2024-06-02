@@ -95,9 +95,7 @@ class HomeScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyMedium),
                     ),
                     TextButton(
-                        onPressed: () {
-                          print('hello');
-                        },
+                        onPressed: () {},
                         child: Row(
                           children: [
                             Text('04',
@@ -128,9 +126,7 @@ class HomeScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyMedium),
                     ),
                     TextButton(
-                        onPressed: () {
-                          print('hello');
-                        },
+                        onPressed: () {},
                         child: Row(
                           children: [
                             Text('\$ 123',

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:get/get.dart';
 import 'package:zenzzed/profile/controllers/edit_profile_controller.dart';
 
@@ -28,7 +28,7 @@ class EditProfile extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Container(
+                SizedBox(
                   height: 200,
                   width: 200,
                   child: Image.asset(
@@ -129,19 +129,19 @@ class EditProfile extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
+            SizedBox(
               width: 200,
               child: TextButton(
                 style: ButtonStyle(
-                  backgroundColor: WidgetStateProperty.all(
+                  backgroundColor: MaterialStateProperty.all(
                     Theme.of(context).colorScheme.primary,
                   ),
-                  shape: WidgetStateProperty.all(
+                  shape: MaterialStateProperty.all(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  side: WidgetStateProperty.all(
+                  side: MaterialStateProperty.all(
                     BorderSide.none,
                   ),
                 ),

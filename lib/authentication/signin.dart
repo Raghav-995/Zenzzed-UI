@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zenzzed/home/View/home_page.dart';
 import 'package:zenzzed/home/View/home_screen.dart';
 import 'package:zenzzed/authentication/signup.dart';
 // import 'package:zenzzed/widgets/homepage.dart';

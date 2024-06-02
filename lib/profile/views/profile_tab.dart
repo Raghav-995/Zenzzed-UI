@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:zenzzed/profile/views/change_password.dart';
 import 'package:zenzzed/profile/views/edit_profile.dart';
 import 'package:zenzzed/profile/views/my_service_requests.dart';
+import 'package:zenzzed/profile/views/notifications.dart';
+import 'package:zenzzed/profile/views/referrals_earnings.dart';
+import 'package:zenzzed/profile/views/termscondition.dart';
+import 'package:zenzzed/profile/views/your_referrals.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({super.key});
@@ -176,185 +181,216 @@ class ProfileTab extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                height: 60,
-                margin: const EdgeInsets.symmetric(vertical: 1),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(
-                    10,
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (ctx) => const YourReferrals()));
+                },
+                child: Container(
+                  height: 60,
+                  margin: const EdgeInsets.symmetric(vertical: 1),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(
+                      10,
+                    ),
                   ),
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      'Your Referrals',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      '03',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Colors.grey,
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 60,
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.symmetric(vertical: 1),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      'Referral earnings',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Spacer(),
-                    Container(
-                      height: 50,
-                      padding: const EdgeInsets.only(
-                        top: 5,
-                        left: 10,
-                        right: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.grey[350],
-                        borderRadius: BorderRadius.circular(
-                          10,
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Your Referrals',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      child: Text(
-                        '\$359.45',
+                      const Spacer(),
+                      Text(
+                        '03',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Colors.grey,
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                height: 60,
-                margin: const EdgeInsets.symmetric(vertical: 1),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(
-                    10,
+                      const Icon(
+                        Icons.keyboard_arrow_right_rounded,
+                        color: Colors.grey,
+                      )
+                    ],
                   ),
                 ),
-                child: Row(
-                  children: [
-                    const Text(
-                      'Notifications',
-                      style: TextStyle(
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (builder) => const ReferralsEarnings(),
+                  ));
+                },
+                child: Container(
+                  height: 60,
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.symmetric(vertical: 1),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(
+                      10,
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Referral earnings',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Spacer(),
+                      Container(
+                        height: 50,
+                        padding: const EdgeInsets.only(
+                          top: 5,
+                          left: 10,
+                          right: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[350],
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                        ),
+                        child: Text(
+                          '\$359.45',
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_right_rounded,
                         color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (builder) => const Notifications()));
+                },
+                child: Container(
+                  height: 60,
+                  margin: const EdgeInsets.symmetric(vertical: 1),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(
+                      10,
                     ),
-                    const Spacer(),
-                    Text(
-                      '',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
+                  ),
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Notifications',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Colors.grey,
-                    )
-                  ],
+                      const Spacer(),
+                      Text(
+                        '',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_right_rounded,
+                        color: Colors.grey,
+                      )
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                height: 60,
-                margin: const EdgeInsets.symmetric(vertical: 1),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                ),
-                child: const Row(
-                  children: [
-                    Text(
-                      'Change password',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (builder) => const ChangePassword()));
+                },
+                child: Container(
+                  height: 60,
+                  margin: const EdgeInsets.symmetric(vertical: 1),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(
+                      10,
                     ),
-                    Spacer(),
-                    Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Colors.grey,
-                    )
-                  ],
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Change password',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(
+                        Icons.keyboard_arrow_right_rounded,
+                        color: Colors.grey,
+                      )
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                height: 60,
-                padding: const EdgeInsets.all(10),
-                margin: const EdgeInsets.symmetric(vertical: 1),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(
-                    10,
-                  ),
-                ),
-                child: const Row(
-                  children: [
-                    Text(
-                      'Terms & conditions',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (builder) => const TermsConditions()));
+                },
+                child: Container(
+                  height: 60,
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.symmetric(vertical: 1),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(
+                      10,
                     ),
-                    Spacer(),
-                    Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Colors.grey,
-                    )
-                  ],
+                  ),
+                  child: const Row(
+                    children: [
+                      Text(
+                        'Terms & conditions',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(
+                        Icons.keyboard_arrow_right_rounded,
+                        color: Colors.grey,
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(

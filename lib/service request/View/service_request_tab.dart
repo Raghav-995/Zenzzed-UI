@@ -3,11 +3,12 @@ import 'package:get/get.dart';
 import 'package:zenzzed/service%20request/Controller/service_request_controller.dart';
 
 class ServiceRequestTab extends StatelessWidget {
-  ServiceRequestTab({super.key});
-  final controller = Get.put(ServiceRequestController());
-  var img = 0;
+  const ServiceRequestTab({super.key});
+
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ServiceRequestController());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -21,12 +22,12 @@ class ServiceRequestTab extends StatelessWidget {
             ),
             child: TextButton(
               style: ButtonStyle(
-                shape: WidgetStateProperty.all(
+                shape: MaterialStateProperty.all(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                backgroundColor: WidgetStateProperty.all(
+                backgroundColor: MaterialStateProperty.all(
                   Colors.blueGrey[900],
                 ),
               ),
@@ -61,7 +62,6 @@ class ServiceRequestTab extends StatelessWidget {
                           ),
                         ],
                       ),
-                      actions: [],
                     );
                   },
                 );
@@ -190,15 +190,15 @@ class ServiceRequestTab extends StatelessWidget {
                     );
                   },
                   style: ButtonStyle(
-                    padding: WidgetStateProperty.all(
+                    padding: MaterialStateProperty.all(
                       const EdgeInsets.all(15),
                     ),
-                    shape: WidgetStateProperty.all(
+                    shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    backgroundColor: WidgetStateProperty.all(
+                    backgroundColor: MaterialStateProperty.all(
                       Colors.grey[200],
                     ),
                   ),
@@ -263,13 +263,13 @@ class ServiceRequestTab extends StatelessWidget {
                 children: [
                   OutlinedButton.icon(
                     style: ButtonStyle(
-                      padding: WidgetStateProperty.all(
+                      padding: MaterialStateProperty.all(
                         const EdgeInsets.symmetric(
                           vertical: 0,
                           horizontal: 10,
                         ),
                       ),
-                      shape: WidgetStateProperty.all(
+                      shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -336,7 +336,7 @@ class ServiceRequestTab extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Container(
+                    SizedBox(
                       // margin: EdgeInsets.all(5),
                       height: 90,
                       child: ListView.builder(

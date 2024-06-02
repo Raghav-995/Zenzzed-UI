@@ -319,6 +319,7 @@ class _ServiceCardHState extends State<ServiceCardH> {
                         onPressed: () {
                           setState(() {
                             listData[index]['accept'] == 'No';
+                            // ignore: avoid_print
                             print(listData);
                           });
                         },
