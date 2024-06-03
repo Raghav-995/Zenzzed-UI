@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:zenzzed/profile/views/applied_service_requests.dart';
 import 'package:zenzzed/profile/views/change_password.dart';
 import 'package:zenzzed/profile/views/edit_profile.dart';
 import 'package:zenzzed/profile/views/my_service_requests.dart';
@@ -143,39 +144,44 @@ class ProfileTab extends StatelessWidget {
                   ),
                 ),
               ),
-              Container(
-                height: 60,
-                margin: const EdgeInsets.symmetric(vertical: 5),
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.grey[200],
-                  borderRadius: BorderRadius.circular(
-                    10,
+              GestureDetector(
+                onTap: () {
+                  Get.to(() => AppliedServiceRequests());
+                },
+                child: Container(
+                  height: 60,
+                  margin: const EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    borderRadius: BorderRadius.circular(
+                      10,
+                    ),
                   ),
-                ),
-                child: Row(
-                  children: [
-                    const Text(
-                      'Applied service requests',
-                      style: TextStyle(
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Applied service requests',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        '02',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Icon(
+                        Icons.keyboard_arrow_right_rounded,
                         color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      '02',
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const Icon(
-                      Icons.keyboard_arrow_right_rounded,
-                      color: Colors.grey,
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(
