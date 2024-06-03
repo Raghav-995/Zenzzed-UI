@@ -50,9 +50,11 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () {
-              Get.to(() => const SearchService(
-                    iconsShow: true,
-                  ));
+              Get.to(
+                () => SearchService(
+                  iconsShow: true,
+                ),
+              );
             },
             icon: Icon(
               CupertinoIcons.search,
