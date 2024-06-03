@@ -93,7 +93,7 @@ class ReferralsEarnings extends StatelessWidget {
                     .copyWith(color: Theme.of(context).colorScheme.primary),
               ),
               const SizedBox(
-                height: 24.0,
+                height: 25.0,
               ),
               Container(
                 decoration: BoxDecoration(
