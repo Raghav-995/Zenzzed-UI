@@ -1,20 +1,34 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:zenzzed/profile/views/service_detail_accept.dart';
 import 'package:zenzzed/profile/controllers/referrals_controller.dart';
 
-class YourReferrals extends StatelessWidget {
-  const YourReferrals({super.key});
+class AppliedServiceRequests extends StatelessWidget {
+  const AppliedServiceRequests({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(
+            Icons.arrow_back_ios_new_rounded,
+            size: 20,
+          ),
+        ),
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-          'Your Referrals',
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Theme.of(context).colorScheme.primary,
-              ),
+          'Applied service requests',
+          style: TextStyle(
+            fontSize: 20,
+            color: Theme.of(context).colorScheme.primary,
+          ),
         ),
         actions: [
           PopupMenuButton<String>(
@@ -23,8 +37,7 @@ class YourReferrals extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary,
             ),
             onSelected: (String result) {
-              // ignore: avoid_print
-              print(result); // handle the selected item here
+              print(result);
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
               const PopupMenuItem<String>(
@@ -45,17 +58,179 @@ class YourReferrals extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(
+                      0.04,
+                    ),
+                  ),
+                ],
+              ),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                          100,
+                        ),
+                        child: Image.asset(
+                          height: 50,
+                          width: 50,
+                          'assets/images/profile.jpg',
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            'James smith',
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          ActionChip(
+                            side: const BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 0,
+                              vertical: 0,
+                            ),
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
+                              ),
+                            ),
+                            label: Text(
+                              'Computer repair',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                      fontSize: 12,
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      fontWeight: FontWeight.bold),
+                            ),
+                            backgroundColor: Colors.grey[350],
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text(
+                            '25,Jul',
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const Row(
+                    children: [
+                      Icon(
+                        Icons.location_on_outlined,
+                        size: 20,
+                      ),
+                      Text(
+                        '3529 Alexandra Drive, Dalls',
+                        style: TextStyle(
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Text(
+                    'I request you to please senf my laptop for repairing as soon as posible so that i can continue on work ',
+                    maxLines: 2,
+                    style: TextStyle(
+                      overflow: TextOverflow.ellipsis,
+                      color: Colors.black,
+                      fontSize: 15,
+                    ),
+                  ),
+                  const Divider(),
+                  Row(
+                    children: [
+                      const Text(
+                        'Status: ',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        'in progress',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontSize: 14,
+                        ),
+                      ),
+                      const Spacer(),
+                      OutlinedButton(
+                        style: ButtonStyle(
+                          shape: WidgetStateProperty.all(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                10,
+                              ),
+                            ),
+                          ),
+                          padding: WidgetStateProperty.all(
+                            const EdgeInsets.only(
+                              left: 15,
+                              right: 15,
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          Get.to(() => const ServiceDetailAccept());
+                        },
+                        child: const Text(
+                          'More info,',
+                          style: TextStyle(
+                            fontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
             GetBuilder(
               init: Get.put(ReferralsController()),
               builder: (controller) {
                 return ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: controller.referralsName.length,
+                  itemCount: controller.appliedReferral.length,
                   itemBuilder: (context, index) {
-                    var referral = controller.referralsName[index];
+                    var referral = controller.appliedReferral[index];
                     return Padding(
                       padding: const EdgeInsets.only(top: 6.0),
                       child: Container(
@@ -68,8 +243,10 @@ class YourReferrals extends StatelessWidget {
                             vertical: 14.0,
                           ),
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   CircleAvatar(
                                     backgroundImage:
@@ -79,6 +256,7 @@ class YourReferrals extends StatelessWidget {
                                     width: 12.0,
                                   ),
                                   Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -88,6 +266,7 @@ class YourReferrals extends StatelessWidget {
                                             .textTheme
                                             .bodySmall!
                                             .copyWith(
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.bold,
                                                 color: Theme.of(context)
                                                     .colorScheme
@@ -98,9 +277,11 @@ class YourReferrals extends StatelessWidget {
                                       ),
                                       Container(
                                         decoration: BoxDecoration(
-                                            color: Colors.grey[200],
-                                            borderRadius:
-                                                BorderRadius.circular(12.0)),
+                                          color: Colors.grey[200],
+                                          borderRadius: BorderRadius.circular(
+                                            12.0,
+                                          ),
+                                        ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(6.0),
                                           child: Text(
@@ -109,12 +290,27 @@ class YourReferrals extends StatelessWidget {
                                                 .textTheme
                                                 .bodySmall!
                                                 .copyWith(
-                                                  fontSize: 10.0,
+                                                  fontSize: 12.0,
                                                   color: Theme.of(context)
                                                       .colorScheme
                                                       .primary,
                                                 ),
                                           ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Spacer(),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '25, Jul',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
                                         ),
                                       ),
                                     ],
@@ -148,8 +344,9 @@ class YourReferrals extends StatelessWidget {
                                     child: Align(
                                       alignment: Alignment.topLeft,
                                       child: Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 24.0),
+                                        padding: const EdgeInsets.only(
+                                          left: 24.0,
+                                        ),
                                         child: SizedBox(
                                           width: 12.0,
                                           child: Divider(
@@ -185,7 +382,7 @@ class YourReferrals extends StatelessWidget {
                                                   .textTheme
                                                   .bodySmall!
                                                   .copyWith(
-                                                    fontSize: 10.0,
+                                                    fontSize: 12.0,
                                                     fontWeight: FontWeight.bold,
                                                     color: Theme.of(context)
                                                         .colorScheme
@@ -210,7 +407,7 @@ class YourReferrals extends StatelessWidget {
                                                       .textTheme
                                                       .bodySmall!
                                                       .copyWith(
-                                                        fontSize: 9.0,
+                                                        fontSize: 12.0,
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         color: Theme.of(context)

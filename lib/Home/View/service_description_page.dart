@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/Home/Controller/home_page_controller.dart';
 import 'package:zenzzed/Home/View/chats/chat.dart';
+import 'package:zenzzed/home/View/service_detail_after_referrel.dart';
 import 'package:zenzzed/themes/theme.dart';
 
 class ServiceDescriptionPage extends StatefulWidget {
@@ -21,40 +22,43 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
   void initState() {
     super.initState();
     // Access ScaffoldMessenger
-    Future.delayed(const Duration(microseconds: 2), () {
-      showModalBottomSheet(
-        shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
-        backgroundColor: Theme.of(context).colorScheme.background,
-        context: context,
-        builder: (ctx) => SizedBox(
-          height: 210,
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Service cost',
-                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                ),
-                const SizedBox(
-                  height: 6.0,
-                ),
-                Text(
-                  'Please enter your service cost. We will tell to the recipient',
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color:
-                            Theme.of(context).colorScheme.onSecondaryContainer,
-                      ),
-                ),
-                const SizedBox(
-                  height: 8.0,
-                ),
-                TextField(
-                  decoration: InputDecoration(
+    Future.delayed(
+      const Duration(microseconds: 2),
+      () {
+        showModalBottomSheet(
+          shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)),
+          backgroundColor: Theme.of(context).colorScheme.background,
+          context: context,
+          builder: (ctx) => SizedBox(
+            height: 230,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Service cost',
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                  ),
+                  const SizedBox(
+                    height: 6.0,
+                  ),
+                  Text(
+                    'Please enter your service cost. We will tell to the recipient',
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer,
+                        ),
+                  ),
+                  const SizedBox(
+                    height: 8.0,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16.0),
                         borderSide: BorderSide(
@@ -70,33 +74,41 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                               color:
                                   Theme.of(context).colorScheme.outlineVariant),
                       border: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Theme.of(context).colorScheme.primary,
-                            width: 1.0,
-                          ),
-                          borderRadius: BorderRadius.circular(16.0))),
-                ),
-                const SizedBox(
-                  height: 12.0,
-                ),
-                Center(
-                  child: ElevatedButton(
-                    child: Text(
-                      'Quote',
-                      style: Theme.of(context).textTheme.bodySmall,
+                        borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.primary,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(
+                          16.0,
+                        ),
+                      ),
                     ),
-                    onPressed: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (builde) => const Chat()));
-                    },
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 12.0,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      child: Text(
+                        'Quote',
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (builde) => const Chat(),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      },
+    );
   }
 
   void _showAlertDialog() {
@@ -105,6 +117,15 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
       context: context,
       builder: (BuildContext context) {
         // Return the AlertDialog widget
+        Future.delayed(
+          const Duration(
+            seconds: 2,
+          ),
+          () {
+            Navigator.of(context).pop();
+            Get.off(() => const ServiceDetailAfterReferrel());
+          },
+        );
         return AlertDialog(
           backgroundColor: Theme.of(context).colorScheme.background,
           elevation: 12.0,
@@ -166,11 +187,13 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
             Get.back();
           },
         ),
-        title: Text('Computer repair',
-            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontWeight: FontWeight.bold,
-                )),
+        title: Text(
+          'Computer repair',
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                color: Theme.of(context).colorScheme.primary,
+                fontWeight: FontWeight.bold,
+              ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Center(
@@ -249,14 +272,16 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                             const SizedBox(
                               width: 8.0,
                             ),
-                            Text('3529 Alexander Drive, Dallas',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    )),
+                            Text(
+                              '3529 Alexander Drive, Dallas',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
+                                  ),
+                            ),
                           ],
                         ),
                         Row(
@@ -307,11 +332,14 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                   OutlinedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                        shape: MaterialStatePropertyAll(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                      shape: WidgetStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                        ),
                       ),
-                    )),
+                    ),
                     child: Text(
                       'Show on map',
                       style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -510,7 +538,8 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                                                       },
                                                       style: ButtonStyle(
                                                         shape:
-                                                            MaterialStatePropertyAll(
+                                                            WidgetStateProperty
+                                                                .all(
                                                           RoundedRectangleBorder(
                                                             borderRadius:
                                                                 BorderRadius
@@ -548,7 +577,7 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                           },
                           label: const Text('Refer'),
                           style: ButtonStyle(
-                            shape: MaterialStatePropertyAll(
+                            shape: WidgetStateProperty.all(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                   10,
@@ -567,12 +596,13 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
-                                  builder: (builder) => const Chat()),
+                                builder: (builder) => const Chat(),
+                              ),
                             );
                           },
                           label: const Text('Chat'),
                           style: ButtonStyle(
-                            shape: MaterialStatePropertyAll(
+                            shape: WidgetStateProperty.all(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                   10,
