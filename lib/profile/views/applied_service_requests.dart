@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/profile/views/service_detail_accept.dart';
@@ -37,6 +35,7 @@ class AppliedServiceRequests extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary,
             ),
             onSelected: (String result) {
+              // ignore: avoid_print
               print(result);
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
@@ -190,14 +189,14 @@ class AppliedServiceRequests extends StatelessWidget {
                       const Spacer(),
                       OutlinedButton(
                         style: ButtonStyle(
-                          shape: WidgetStateProperty.all(
+                          shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 10,
                               ),
                             ),
                           ),
-                          padding: WidgetStateProperty.all(
+                          padding: MaterialStateProperty.all(
                             const EdgeInsets.only(
                               left: 15,
                               right: 15,
@@ -431,16 +430,16 @@ class AppliedServiceRequests extends StatelessWidget {
                                 alignment: Alignment.bottomRight,
                                 child: OutlinedButton(
                                   style: ButtonStyle(
-                                    shape: WidgetStateProperty.all(
+                                    shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
                                       ),
                                     ),
-                                    foregroundColor: WidgetStatePropertyAll(
+                                    foregroundColor: MaterialStatePropertyAll(
                                         Theme.of(context).colorScheme.primary),
-                                    iconColor: WidgetStateProperty.all(
+                                    iconColor: MaterialStateProperty.all(
                                       Theme.of(context).colorScheme.primary,
                                     ),
                                   ),

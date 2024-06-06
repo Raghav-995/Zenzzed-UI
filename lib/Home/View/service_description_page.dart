@@ -332,7 +332,7 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                   OutlinedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                      shape: WidgetStateProperty.all(
+                      shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(
                             10,
@@ -538,7 +538,7 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                                                       },
                                                       style: ButtonStyle(
                                                         shape:
-                                                            WidgetStateProperty
+                                                            MaterialStateProperty
                                                                 .all(
                                                           RoundedRectangleBorder(
                                                             borderRadius:
@@ -577,7 +577,7 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                           },
                           label: const Text('Refer'),
                           style: ButtonStyle(
-                            shape: WidgetStateProperty.all(
+                            shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                   10,
@@ -602,7 +602,7 @@ class _ServiceDescriptionPageState extends State<ServiceDescriptionPage> {
                           },
                           label: const Text('Chat'),
                           style: ButtonStyle(
-                            shape: WidgetStateProperty.all(
+                            shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(
                                   10,

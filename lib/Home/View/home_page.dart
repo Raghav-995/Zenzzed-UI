@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             onPressed: () {
               Get.to(
-                () => SearchService(
+                () => const SearchService(
                   iconsShow: true,
                 ),
               );

@@ -42,7 +42,7 @@ class ServiceRequestsDetails extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             Container(
-              margin: EdgeInsets.symmetric(
+              margin: const EdgeInsets.symmetric(
                 horizontal: 15,
                 vertical: 5,
               ),
@@ -127,7 +127,7 @@ class ServiceRequestsDetails extends StatelessWidget {
               ),
             ),
             ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: controller.requests.length,
               itemBuilder: (context, index) {

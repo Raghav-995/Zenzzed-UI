@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class ServiceRequest {
   String name;
   double rating;

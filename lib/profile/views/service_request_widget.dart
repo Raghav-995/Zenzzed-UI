@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zenzzed/profile/controllers/service_requests_controller.dart';
-import 'package:zenzzed/profile/models/service_request_model.dart';
 
 class ServiceRequestWidget extends StatelessWidget {
   const ServiceRequestWidget({super.key, required this.index});

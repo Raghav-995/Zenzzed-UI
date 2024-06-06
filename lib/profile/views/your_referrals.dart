@@ -234,16 +234,16 @@ class YourReferrals extends StatelessWidget {
                                 alignment: Alignment.bottomRight,
                                 child: OutlinedButton(
                                   style: ButtonStyle(
-                                    shape: WidgetStateProperty.all(
+                                    shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(
                                           10,
                                         ),
                                       ),
                                     ),
-                                    foregroundColor: WidgetStatePropertyAll(
+                                    foregroundColor: MaterialStatePropertyAll(
                                         Theme.of(context).colorScheme.primary),
-                                    iconColor: WidgetStateProperty.all(
+                                    iconColor: MaterialStateProperty.all(
                                       Theme.of(context).colorScheme.primary,
                                     ),
                                   ),

@@ -146,7 +146,7 @@ class ProfileTab extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(() => AppliedServiceRequests());
+                  Get.to(() => const AppliedServiceRequests());
                 },
                 child: Container(
                   height: 60,

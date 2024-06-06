@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   var currInd = 0;
   final _widgetOptions = [
     const HomePage(),
-    ServiceRequestTab(),
+    const ServiceRequestTab(),
     const ProfileTab(),
   ];
 

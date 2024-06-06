@@ -16,7 +16,7 @@ class ServiceDetailAfterReferrel extends StatelessWidget {
             size: 18,
           ),
           onPressed: () {
-            Get.to(HomeScreen());
+            Get.to(const HomeScreen());
           },
         ),
         title: const Text(
@@ -164,7 +164,7 @@ class ServiceDetailAfterReferrel extends StatelessWidget {
                   OutlinedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                      shape: WidgetStateProperty.all(
+                      shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),

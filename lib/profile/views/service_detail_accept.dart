@@ -164,7 +164,7 @@ class ServiceDetailAccept extends StatelessWidget {
                   OutlinedButton(
                     onPressed: () {},
                     style: ButtonStyle(
-                      shape: WidgetStateProperty.all(
+                      shape: MaterialStateProperty.all(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -241,28 +241,28 @@ class ServiceDetailAccept extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {},
-                      child: const Text(
-                        'Update work status',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
                       style: ButtonStyle(
-                        shape: WidgetStateProperty.all(
+                        shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                               10,
                             ),
                           ),
                         ),
-                        padding: const WidgetStatePropertyAll(
+                        padding: const MaterialStatePropertyAll(
                           EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 0,
                           ),
                         ),
-                        backgroundColor: WidgetStateProperty.all(
+                        backgroundColor: MaterialStateProperty.all(
                           Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
+                      child: const Text(
+                        'Update work status',
+                        style: TextStyle(
+                          color: Colors.white,
                         ),
                       ),
                     ),
@@ -302,20 +302,20 @@ class ServiceDetailAccept extends StatelessWidget {
                         ),
                       ),
                       style: ButtonStyle(
-                        shape: WidgetStateProperty.all(
+                        shape: MaterialStatePropertyAll(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(
                               10,
                             ),
                           ),
                         ),
-                        padding: const WidgetStatePropertyAll(
+                        padding: const MaterialStatePropertyAll(
                           EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 0,
                           ),
                         ),
-                        backgroundColor: WidgetStateProperty.all(
+                        backgroundColor: MaterialStateProperty.all(
                           Theme.of(context).colorScheme.primary,
                         ),
                       ),
