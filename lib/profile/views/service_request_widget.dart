@@ -140,7 +140,7 @@ class ServiceRequestWidget extends StatelessWidget {
                           const Spacer(),
                           OutlinedButton.icon(
                             style: ButtonStyle(
-                              shape: WidgetStateProperty.all(
+                              shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
                                     10,
@@ -159,7 +159,7 @@ class ServiceRequestWidget extends StatelessWidget {
                           ),
                           OutlinedButton.icon(
                             style: ButtonStyle(
-                              shape: WidgetStateProperty.all(
+                              shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
                                     10,
@@ -184,17 +184,17 @@ class ServiceRequestWidget extends StatelessWidget {
                             width: 130,
                             child: TextButton.icon(
                               style: ButtonStyle(
-                                shape: WidgetStateProperty.all(
+                                shape: MaterialStateProperty.all(
                                   RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(
                                       10,
                                     ),
                                   ),
                                 ),
-                                backgroundColor: WidgetStateProperty.all(
+                                backgroundColor: MaterialStateProperty.all(
                                   Theme.of(context).colorScheme.primary,
                                 ),
-                                iconColor: WidgetStateProperty.all(
+                                iconColor: MaterialStateProperty.all(
                                   Colors.white,
                                 ),
                               ),
